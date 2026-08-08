@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Finish & Harden Existing AI Software",
+    "problem": "For AI-assisted apps that mostly work but still have architecture, state-integrity, security, testing, or deployment gaps.",
+    "entry": "Repository audit + fix the highest-priority blocker + verified build/test state + exact remaining blockers.",
+    "proof": "Multi-Repo Engineering Hardening, DriftGuard, TraceCrumb"
+  },
+  {
+    "title": "Build AI Automations & Internal Tools",
+    "problem": "For teams that need a bounded AI workflow inside a real application or operational process\u2014not a standalone prompt demo.",
+    "entry": "One end-to-end vertical slice with structured inputs/outputs, failure behavior, and a human-control boundary.",
+    "proof": "DriftGuard, Chat-to-Post Engine, SignalOps"
+  },
+  {
+    "title": "Build Research, Extraction & Decision Pipelines",
+    "problem": "For repeated research/data work that needs collection, normalization, deduplication, provenance, ranking, and reliable export.",
+    "entry": "One representative source integrated end-to-end through validation, dedupe, provenance, and deterministic output.",
+    "proof": "Market Intelligence Pipeline, SignalOps, GitHub Issue Mining"
+  }
+]

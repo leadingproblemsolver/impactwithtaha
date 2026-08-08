@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Taha Aslam — Full-Stack Developer | AI Integration, Automation & Internal Tools">
+<title>Taha Aslam — AI Integration, Automation & Internal Tools</title>
+<style>
+:root{--bg:#090b0e;--panel:#11151a;--text:#f5f7f9;--muted:#a7b1bc;--line:#252d36;--accent:#b9ff66;--max:1120px}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:inherit} .wrap{max-width:var(--max);margin:auto;padding:0 22px}
+nav{height:72px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)} nav a{text-decoration:none}
+.brand{font-weight:800} .links{display:flex;gap:18px;color:var(--muted);font-size:14px}
+.hero{padding:94px 0 70px} .eyebrow,.kicker{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+h1{font-size:clamp(48px,8vw,88px);line-height:.96;max-width:1000px;margin:16px 0 24px;letter-spacing:-.045em}
+.lead{max-width:790px;font-size:clamp(19px,2.3vw,25px);color:var(--muted)}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px} .btn{display:inline-block;padding:12px 16px;border-radius:10px;text-decoration:none;font-weight:700;border:1px solid var(--line)}
+.btn.primary{background:var(--accent);color:#0a0d08;border-color:var(--accent)} section{padding:64px 0;border-top:1px solid var(--line)} h2{font-size:clamp(30px,4vw,46px);letter-spacing:-.03em;margin:8px 0 28px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px} .offer,.proof{border:1px solid var(--line);background:var(--panel);border-radius:16px;padding:22px}
+.offer h3,.proof h3{font-size:20px;margin:8px 0} .offer p,.proof p,.small{color:var(--muted)} .small{font-size:14px}
+.proofs{display:grid;grid-template-columns:repeat(2,1fr);gap:16px} .proof{text-decoration:none;display:flex;min-height:260px;flex-direction:column;justify-content:space-between;transition:transform .15s,border-color .15s}
+.proof:hover{transform:translateY(-2px);border-color:#596574} .proof:first-child{grid-column:span 2} .open{font-weight:800;color:var(--accent)}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px} .metric{border-top:1px solid var(--line);padding-top:12px} .metric b{display:block;font-size:28px} .metric span{color:var(--muted);font-size:13px}
+.boundary{padding:24px;border-left:3px solid var(--accent);background:var(--panel);color:var(--muted);max-width:850px}
+footer{padding:50px 0 80px;color:var(--muted)} code{color:var(--text)} @media(max-width:760px){.grid3,.proofs,.metrics{grid-template-columns:1fr} .proof:first-child{grid-column:auto} .links a:nth-child(1){display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav><a class="brand" href="#top">Taha Aslam</a><div class="links"><a href="#services">Services</a><a href="#work">Proof</a><a href="https://github.com/leadingproblemsolver" target="_blank" rel="noopener">GitHub ↗</a></div></nav>
+
+<header id="top" class="hero">
+<p class="eyebrow">Full-Stack Development · AI Integration · Automation</p>
+<h1>I turn partially-built AI software and messy workflows into bounded, testable systems.</h1>
+<p class="lead">I build and harden AI-powered applications, internal tools, workflow automations, and research/data pipelines—especially where the prototype already exists but architecture, reliability, testing, or deployment still blocks shipping.</p>
+<div class="actions">
+<a class="btn primary" href="mailto:leadingproblemsolver@gmail.com?subject=Project%20inquiry">Send me the repo or workflow that's stuck</a>
+<a class="btn" href="#work">See verified proof</a>
+</div>
+<div class="metrics">
+<div class="metric"><b>50</b><span>tests in a separate five-system packaged release</span></div>
+<div class="metric"><b>5</b><span>installable wheels + CLI entry points</span></div>
+<div class="metric"><b>52 + 5</b><span>DriftGuard release + judgment checks in six-repo audit</span></div>
+<div class="metric"><b>32 + 45</b><span>TraceCrumb static + graph checks</span></div>
+</div>
+</header>
+
+<section id="services"><p class="eyebrow">What I can take off your plate</p><h2>Three concrete engagement shapes.</h2><div class="grid3">
+    <article class="offer">
+      <h3>Finish &amp; Harden Existing AI Software</h3>
+      <p>For AI-assisted apps that mostly work but still have architecture, state-integrity, security, testing, or deployment gaps.</p>
+      <p class="small"><strong>Fast first milestone:</strong> Repository audit + fix the highest-priority blocker + verified build/test state + exact remaining blockers.</p>
+      <p class="small"><strong>Relevant proof:</strong> Multi-Repo Engineering Hardening, DriftGuard, TraceCrumb</p>
+    </article>
+    <article class="offer">
+      <h3>Build AI Automations &amp; Internal Tools</h3>
+      <p>For teams that need a bounded AI workflow inside a real application or operational process—not a standalone prompt demo.</p>
+      <p class="small"><strong>Fast first milestone:</strong> One end-to-end vertical slice with structured inputs/outputs, failure behavior, and a human-control boundary.</p>
+      <p class="small"><strong>Relevant proof:</strong> DriftGuard, Chat-to-Post Engine, SignalOps</p>
+    </article>
+    <article class="offer">
+      <h3>Build Research, Extraction &amp; Decision Pipelines</h3>
+      <p>For repeated research/data work that needs collection, normalization, deduplication, provenance, ranking, and reliable export.</p>
+      <p class="small"><strong>Fast first milestone:</strong> One representative source integrated end-to-end through validation, dedupe, provenance, and deterministic output.</p>
+      <p class="small"><strong>Relevant proof:</strong> Market Intelligence Pipeline, SignalOps, GitHub Issue Mining</p>
+    </article></div></section>
+
+<section id="work"><p class="eyebrow">Selected work</p><h2>Proof before adjectives.</h2><div class="proofs">
+    <a class="proof" href="proof/multi-repo-hardening.html">
+      <div><span class="kicker">Existing App Hardening</span><h3>Production Hardening Across AI-Assisted Repositories</h3></div>
+      <p>Converted partially complete systems into locally verified release candidates while preserving the distinction between offline proof and live production readiness.</p>
+      <span class="open">View proof →</span>
+    </a>
+    <a class="proof" href="proof/driftguard.html">
+      <div><span class="kicker">Full-Stack AI Integration</span><h3>DriftGuard — Deterministic + AI Decision Boundary</h3></div>
+      <p>A full-stack decision-boundary application that keeps hard constraints under deterministic control while using AI only for bounded semantic interpretation.</p>
+      <span class="open">View proof →</span>
+    </a>
+    <a class="proof" href="proof/signalops-market-intel.html">
+      <div><span class="kicker">Automation &amp; Data Pipelines</span><h3>SignalOps + Market Intelligence Pipeline</h3></div>
+      <p>A research/qualification stack for ingesting evidence, normalizing it, preserving provenance, deduplicating records, ranking opportunities, and exporting deterministic downstream state.</p>
+      <span class="open">View proof →</span>
+    </a>
+    <a class="proof" href="proof/tracecrumb.html">
+      <div><span class="kicker">Operational AI Tool</span><h3>TraceCrumb — AI-Assisted Incident Triage</h3></div>
+      <p>An incident-oriented application focused on preserving the first diagnostic branch during the first minutes of an operational incident.</p>
+      <span class="open">View proof →</span>
+    </a>
+    <a class="proof" href="proof/chat-to-post.html">
+      <div><span class="kicker">LLM Workflow Integration</span><h3>Evidence-Grounded LLM Workflow</h3></div>
+      <p>A provider-neutral transformation system that turns source material into evidence-bounded public artifacts with structured contracts, adversarial gates, and explicit human approval.</p>
+      <span class="open">View proof →</span>
+    </a></div></section>
+
+<section><p class="eyebrow">How I work</p><h2>Inspect → bound → implement → verify → ship.</h2>
+<div class="grid3">
+<article class="offer"><h3>1. Establish reality</h3><p>Separate what exists, what merely appears complete, and what still depends on credentials, infrastructure, users, or production conditions.</p></article>
+<article class="offer"><h3>2. Fix the actual boundary</h3><p>Work at the state, authority, integration, failure-handling, or deployment boundary that is blocking the desired outcome.</p></article>
+<article class="offer"><h3>3. Return evidence</h3><p>Deliver the implementation with tests/checks, explicit remaining blockers, and a clean next state rather than a vague “done.”</p></article>
+</div></section>
+
+<section><p class="eyebrow">Evidence boundary</p><h2>What the portfolio does—and does not—claim.</h2>
+<p class="boundary">AI accelerated parts of implementation and analysis. The proof shown here distinguishes repository contents, offline validation, external interactions, and live/commercial outcomes. Local checks are not presented as production adoption; architecture is not presented as ROI; and unverified production behavior is labeled as such.</p></section>
+
+<section>
+<p class="eyebrow">Start small</p><h2>Give me the stuck boundary, not a grand brief.</h2>
+<p class="lead">A good first milestone is usually one repository audit, one broken deployment path, one bounded AI feature, or one end-to-end automation slice with a verifiable success gate.</p>
+<div class="actions"><a class="btn primary" href="mailto:leadingproblemsolver@gmail.com?subject=Project%20inquiry">Email leadingproblemsolver@gmail.com</a><a class="btn" href="https://github.com/leadingproblemsolver" target="_blank" rel="noopener">GitHub profile ↗</a></div>
+</section>
+
+<footer>Built as a compact evidence surface. Deeper artifacts are shared only when relevant to the buyer's problem.</footer>
+</div>
+</body></html>
