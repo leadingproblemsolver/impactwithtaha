@@ -1,2 +1,4 @@
 /internship /internship.html 200
+/proof-map /proof-map.html 200
+/api/* /.netlify/functions/:splat 200
 /* /index.html 200!

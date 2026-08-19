@@ -2,20 +2,22 @@
 
 | Route | Purpose | Next action |
 |---|---|---|
-| `/` | Positioning + core mechanism | Inspect work / execution / resume |
-| `/work` | Selected proof surfaces | Open exact case study |
+| `/` | Product + portfolio positioning | Tailor the work to the visitor |
+| `/lens` | Viewer tailoring + artifact workbench | Generate view → inspect proof → submit artifact |
+| `/work` | Raw proof surfaces | Open exact case study or switch to Lens |
 | `/execution` | Active commercial field experiment | Open GTM landing/demo/intake |
-| `/proof-status` | Proven vs missing evidence | Identify next proof target |
-| `/method` | Reality / Work Actualization OS | Return to inspectable work |
-| `/resume` | Canonical shareable CV surface | Request/send packet or inspect links |
-| `/start` | Convert interest into contact | Email / GitHub / CV |
+| `/proof-status` | Proven vs missing evidence | Inspect claim boundary |
+| `/method` | Impact Lens Protocol | Inspect contract / Ulomis lineage |
+| `/resume` | Canonical shareable CV surface | Evaluate in context / request packet |
+| `/start` | Convert interest into contact/use | Run Lens / email / GitHub |
 | `/links` | Direct URL registry | Open exact artifact |
-| `/proof/commercial-systems` | GTM/commercial field experiment | Live fieldwork / proof status |
-| `/proof/driftguard` | Agent reliability proof | Repository / proof status |
-| `/proof/signalops` | Market/evidence pipeline proof | Repositories / proof status |
-| `/proof/tracecrumb` | Incident-memory product proof | Live product / repository |
+| `/proof/impact-lens` | This branch as proof | Repo / Lens |
+| `/proof/ulomis` | Continuity lineage | Ulomis repo |
+| `/proof/commercial-systems` | GTM/commercial field experiment | Live fieldwork |
+| `/proof/driftguard` | Agent reliability proof | Repository |
+| `/proof/signalops` | Market/evidence pipeline proof | Repository |
+| `/proof/tracecrumb` | Incident-memory product proof | Live product |
 | `/proof/project-spec-compiler` | Specification-control CLI proof | Repository |
 | `/proof/pathmeter` | Delivery-instrumentation CLI proof | Repository |
-| `/proof/multi-repo-hardening` | Engineering hardening proof | Proof status |
 
-Netlify `_redirects` force-rewrites all direct routes to the route-aware static `index.html`, so refresh/direct navigation works without a framework server.
+Netlify `_redirects` routes `/api/*` to Functions before the SPA rewrite. Direct routes and refresh remain stable without a framework server.
