@@ -9,6 +9,16 @@ This repository is both:
 
 The site does not ask every visitor to interpret the same project grid. A hiring manager, founder, buyer, collaborator, recruiter, or practitioner can provide lightweight context and receive a view of the same evidence corpus prioritized around what they are likely to own.
 
+## Canonical proof front door
+
+The public portfolio surface is recorded in the proof vault as:
+
+- `https://impactwithtaha.netlify.app`
+
+The repository now also exposes a direct **Proof Map** that collapses the larger GitHub graph into the strongest current receipts and keeps supporting/lineage work out of the headline set.
+
+Use the Proof Map when sending applications or evaluator links. Use the Lens when the visitor should self-identify and receive a tailored view.
+
 ## Product lineage
 
 This branch deliberately adapts the strongest mechanisms from:
@@ -24,13 +34,28 @@ It does **not** copy the household framing from Ulomis.
 - `/` — product/portfolio positioning
 - `/lens` — viewer tailoring + artifact workbench
 - `/work` — raw selected proof registry
-- `/execution` — live GTM/commercial field experiment
 - `/proof-status` — what is proven vs still missing
+- `/proof-map` — canonical headline/supporting proof map with exact receipts and application pairings
 - `/method` — Impact Lens Protocol
 - `/resume` — canonical web CV surface
 - `/start` — clear next action
 - `/links` — direct URL registry
 - `/proof/<project>` — direct case-study routes
+
+## Current headline evidence families
+
+The Proof Map intentionally prioritizes:
+
+1. RealityLatch — evidence reconciliation / permission control;
+2. DriftGuard — agent session settlement / reliability;
+3. SignalOps — real public-corpus evidence triage and permission-aware action state;
+4. DevTools Signal Engine — evidence-bounded developer-tools account intelligence;
+5. Project Specification Compiler — specification/acceptance control, with the supplied live proof surface;
+6. Reality Handoff — proof-carrying bounded DataHub actions;
+7. TraceCrumb — deployed First-60 incident response surface;
+8. Ulomis — deployed continuity/pilot surface.
+
+Other repositories remain supporting proof or lineage rather than being presented as eight more unrelated projects.
 
 ## Supported artifact paths
 
@@ -94,11 +119,15 @@ The short version:
 - analytics exclude sensitive artifact content;
 - no autonomous agents in this branch.
 
+## AI / human ownership boundary
+
+AI has been used heavily to accelerate implementation. Public proof must not imply unaided code authorship. The ownership claim is the problem framing, contracts, invariants, state transitions, failure model, authority boundary, verification path, evidence discipline, testing/debugging decisions, and the ability to reconstruct how the system works.
+
 ## Deploy
 
 Netlify publish directory remains `.`. Netlify Functions are automatically served from `netlify/functions`.
 
-The SPA route fallback remains in `_redirects`, with `/api/*` routed to Netlify Functions first.
+The SPA route fallback remains in `_redirects`, with `/api/*` routed to Netlify Functions first and `/proof-map` routed to its standalone static surface.
 
 ## Critical public claim boundary
 
