@@ -1,0 +1,85 @@
+{
+  "version": "1.0.0",
+  "artifacts": [
+    {
+      "id": "signalops",
+      "name": "SignalOps + Market Intelligence Pipeline",
+      "proof_level": "P2",
+      "surface": "https://github.com/leadingproblemsolver/signalops-workbench",
+      "actors": ["GTM", "founder", "product", "engineering"],
+      "mechanism": "Observed signal separation, deterministic relevance scoring, provenance, restartable next-action and CRM-ready handoff state.",
+      "workflows": ["market sensing", "account research", "lead prioritization", "handoff discipline"],
+      "claim_boundary": "No live CRM automation, production provider reliability, meetings, pipeline or revenue claim."
+    },
+    {
+      "id": "driftguard",
+      "name": "DriftGuard",
+      "proof_level": "P2",
+      "surface": "https://github.com/leadingproblemsolver/driftguard",
+      "actors": ["engineering", "founder", "product"],
+      "mechanism": "Deterministic settlement gates around long-running AI/agent sessions.",
+      "workflows": ["AI workflow reliability", "release gating", "session settlement"],
+      "claim_boundary": "No prevented production incident, external adoption or ROI claim."
+    },
+    {
+      "id": "ulomis",
+      "name": "Ulomis Continuity Companion",
+      "proof_level": "P3 / pilot-ready",
+      "surface": "https://github.com/leadingproblemsolver/ulomis-continuity-companion",
+      "actors": ["product", "operations", "practitioner", "founder"],
+      "mechanism": "Source-backed, uncertainty-visible, correctable continuity state for fragmented work.",
+      "workflows": ["work re-entry", "context recovery", "handoffs", "decision continuity"],
+      "claim_boundary": "No measured re-entry reduction, repeated use, durable multi-device memory or compounding learning claim."
+    },
+    {
+      "id": "tracecrumb",
+      "name": "TraceCrumb First-60",
+      "proof_level": "P3",
+      "surface": "https://tracecrumb.netlify.app/",
+      "actors": ["engineering", "SRE", "support", "product"],
+      "mechanism": "Symptom plus incident memory to a bounded first diagnostic branch.",
+      "workflows": ["incident triage", "first diagnostic action", "operational memory"],
+      "claim_boundary": "No MTTR or first-action improvement claim without external operator outcome data."
+    },
+    {
+      "id": "specgate",
+      "name": "Project Specification Compiler / SpecGate",
+      "proof_level": "P2",
+      "surface": "https://github.com/leadingproblemsolver/project-spec-compiler",
+      "actors": ["engineering", "product", "founder"],
+      "mechanism": "Ambiguous project intent to explicit specification and validation contracts.",
+      "workflows": ["project definition", "engineering handoff", "scope control", "release readiness"],
+      "claim_boundary": "No organization-level time-savings claim."
+    },
+    {
+      "id": "pathmeter",
+      "name": "Pathmeter",
+      "proof_level": "P2",
+      "surface": "https://github.com/leadingproblemsolver/pathmeter",
+      "actors": ["engineering", "product", "founder"],
+      "mechanism": "Delivery milestone and validation instrumentation that prevents failed work being marked shipped.",
+      "workflows": ["software delivery", "cycle-time instrumentation", "release verification"],
+      "claim_boundary": "No sustained cycle-time improvement claim yet."
+    },
+    {
+      "id": "commercial",
+      "name": "Commercial Systems Field Experiment",
+      "proof_level": "P4",
+      "surface": "https://gtm-attempt.netlify.app/",
+      "actors": ["GTM", "founder", "buyer", "recruiting"],
+      "mechanism": "Account evidence to constraint hypothesis, buyer-facing diagnostic, outreach/discovery, and evidence-state tracking.",
+      "workflows": ["customer discovery", "outbound", "diagnostic selling", "market validation"],
+      "claim_boundary": "No paid demand, attributable meetings/pipeline, recruiting KPI or ROI claim."
+    },
+    {
+      "id": "impact-lens",
+      "name": "Impact Lens / Artifact Compiler",
+      "proof_level": "P2 after merge",
+      "surface": "https://github.com/leadingproblemsolver/impactwithtaha",
+      "actors": ["employer", "buyer", "collaborator", "practitioner"],
+      "mechanism": "Artifact plus viewer context to source-bounded, claim-gated, viewer-specific impact presentation.",
+      "workflows": ["portfolio evaluation", "technical communication", "sales proof", "career conversion", "artifact externalization"],
+      "claim_boundary": "No conversion lift, repeated use, generalized arbitrary-artifact understanding or economic impact claim."
+    }
+  ]
+}
