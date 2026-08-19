@@ -1,85 +1,165 @@
 {
-  "version": "1.0.0",
-  "artifacts": [
+  "version": "2.0.0",
+  "proof_ladder": {
+    "P1": "artifact exists",
+    "P2": "behavior is reproducible / inspectable",
+    "P3": "deployed external surface exists",
+    "P4": "external actor interaction occurred",
+    "P5": "measured behavior or operational outcome",
+    "P6": "attributable economic outcome"
+  },
+  "headline": [
     {
-      "id": "signalops",
-      "name": "SignalOps + Market Intelligence Pipeline",
-      "proof_level": "P2",
-      "surface": "https://github.com/leadingproblemsolver/signalops-workbench",
-      "actors": ["GTM", "founder", "product", "engineering"],
-      "mechanism": "Observed signal separation, deterministic relevance scoring, provenance, restartable next-action and CRM-ready handoff state.",
-      "workflows": ["market sensing", "account research", "lead prioritization", "handoff discipline"],
-      "claim_boundary": "No live CRM automation, production provider reliability, meetings, pipeline or revenue claim."
+      "id": "realitylatch",
+      "name": "RealityLatch",
+      "proof_level": "P2 + real-provider-export replay",
+      "repo": "https://github.com/leadingproblemsolver/realitylatch",
+      "receipt": "https://github.com/leadingproblemsolver/realitylatch/blob/main/evidence/case-a/derived/receipt.json",
+      "actors": ["AI Ops", "implementation", "solutions", "operations", "engineering"],
+      "mechanism": "Provider/document evidence is mapped with provenance, reconciled against human-approved hard invariants, and admitted into VERIFIED / CONTRADICTED / INSUFFICIENT_EVIDENCE before permission state.",
+      "verified_now": "19/19 deterministic tests passed in the 2026-08-19 packaging run; preserved three-document Nutrient Studio exports replay into 9 claims and a VERIFIED Case A receipt.",
+      "claim_boundary": "No production automated Nutrient extraction, shipment action, customer adoption, compliance outcome, scale, savings or revenue claim."
     },
     {
       "id": "driftguard",
-      "name": "DriftGuard",
+      "name": "DriftGuard / Agent Session Settlement Preflight",
       "proof_level": "P2",
-      "surface": "https://github.com/leadingproblemsolver/driftguard",
-      "actors": ["engineering", "founder", "product"],
-      "mechanism": "Deterministic settlement gates around long-running AI/agent sessions.",
-      "workflows": ["AI workflow reliability", "release gating", "session settlement"],
-      "claim_boundary": "No prevented production incident, external adoption or ROI claim."
+      "repo": "https://github.com/leadingproblemsolver/driftguard",
+      "actors": ["AI reliability", "agent infrastructure", "platform engineering", "engineering"],
+      "mechanism": "Seven deterministic settlement gates prevent missing or contradictory runtime evidence from silently becoming a pass.",
+      "verified_now": "Public claim registry records 52 release checks + 5 judgment tests and a bounded benchmark of 24/24 agreement, 0 critical false passes, and 17 unsupported passes prevented.",
+      "claim_boundary": "No prevented production incident, production reliability, external adoption or ROI claim."
     },
     {
-      "id": "ulomis",
-      "name": "Ulomis Continuity Companion",
-      "proof_level": "P3 / pilot-ready",
-      "surface": "https://github.com/leadingproblemsolver/ulomis-continuity-companion",
-      "actors": ["product", "operations", "practitioner", "founder"],
-      "mechanism": "Source-backed, uncertainty-visible, correctable continuity state for fragmented work.",
-      "workflows": ["work re-entry", "context recovery", "handoffs", "decision continuity"],
-      "claim_boundary": "No measured re-entry reduction, repeated use, durable multi-device memory or compounding learning claim."
+      "id": "signalops",
+      "name": "SignalOps Workbench",
+      "proof_level": "P2 + real public corpus run",
+      "repo": "https://github.com/leadingproblemsolver/signalops-workbench",
+      "receipt": "https://github.com/leadingproblemsolver/signalops-workbench/blob/main/docs/REAL_RUN_20.md",
+      "actors": ["GTM engineering", "technical growth", "RevOps", "solutions", "founder"],
+      "mechanism": "Observed public evidence stays distinct from interpretation, receives deterministic relevance/action state, and is constrained by permission-aware escalation rules.",
+      "verified_now": "20 real public LangChain issue surfaces produced 20 durable events: 19 public_reply and 1 save; no private escalation was permitted without a prior public response.",
+      "claim_boundary": "No ranking-accuracy, maintainer-response, live CRM, meeting, pipeline, revenue or adoption claim."
+    },
+    {
+      "id": "devtools-signal-engine",
+      "name": "DevTools Signal Engine",
+      "proof_level": "P2",
+      "repo": "https://github.com/leadingproblemsolver/devtools-signal-engine",
+      "proof_surface": "https://github.com/leadingproblemsolver/devtools-signal-engine/blob/main/docs/index.html",
+      "actors": ["developer-tools GTM", "technical growth", "solutions", "founder", "engineering"],
+      "mechanism": "Real GitHub organization evidence is converted into OBSERVED / INFERRED / UNKNOWN account intelligence with bounded acquisition and explicit sampling scope.",
+      "verified_now": "Public repo includes a checked-in hiring proof surface and merged Dalus ICP work sample; benchmark/Qatar cohort expansion remains a separate pending merge until finalized.",
+      "claim_boundary": "GitHub workflow/governance evidence is not buying intent, pain, spend or pipeline."
+    },
+    {
+      "id": "project-spec-compiler",
+      "name": "Project Specification Compiler / Target Spec Compiler",
+      "proof_level": "P2 repo + owner-supplied deployed proof surface",
+      "repo": "https://github.com/leadingproblemsolver/project-spec-compiler",
+      "proof_surface": "https://targetspeccompiler-proof.netlify.app/",
+      "deployment_verification": "URL supplied as live proof surface; the packaging browser could not independently fetch this Netlify site.",
+      "actors": ["engineering", "implementation", "product", "founder"],
+      "mechanism": "Ambiguous project intent becomes machine-checkable specification structure, status vocabulary, bundle equality and deterministic validation/reporting contracts.",
+      "claim_boundary": "No organization-level time-savings or reduced-rework claim without repeated before/after use."
+    },
+    {
+      "id": "reality-handoff",
+      "name": "Reality Handoff Agent",
+      "proof_level": "P2",
+      "repo": "https://github.com/leadingproblemsolver/realityhandoff-agent",
+      "actors": ["AI Ops", "agent infrastructure", "data platform", "solutions", "engineering"],
+      "mechanism": "DataHub evidence → deterministic gate → explicit execution contract → human approval → one bounded mutation → independent re-read → durable recovery.",
+      "verified_now": "Repository packaging records 55/55 deterministic/unit/API/frontend-contract tests plus compile/syntax/secret-scan passes.",
+      "claim_boundary": "Live DataHub P0-P4 is still pending; no live mutation/recovery success is claimed until those receipts exist."
     },
     {
       "id": "tracecrumb",
       "name": "TraceCrumb First-60",
       "proof_level": "P3",
-      "surface": "https://tracecrumb.netlify.app/",
-      "actors": ["engineering", "SRE", "support", "product"],
-      "mechanism": "Symptom plus incident memory to a bounded first diagnostic branch.",
-      "workflows": ["incident triage", "first diagnostic action", "operational memory"],
-      "claim_boundary": "No MTTR or first-action improvement claim without external operator outcome data."
+      "repo": "https://github.com/leadingproblemsolver/TraceCrumb",
+      "proof_surface": "https://tracecrumb-f60.netlify.app/",
+      "deployment_verification": "Connected Netlify account reports the tracecrumb-f60 deployment ready.",
+      "actors": ["SRE", "DevOps", "support engineering", "platform", "solutions"],
+      "mechanism": "Current symptom plus prior incident memory is compressed into a bounded first diagnostic branch and priority checks.",
+      "claim_boundary": "No production MTTR, first-action improvement, adoption or ROI claim."
     },
     {
-      "id": "specgate",
-      "name": "Project Specification Compiler / SpecGate",
+      "id": "ulomis",
+      "name": "Ulomis Continuity Companion",
+      "proof_level": "P3 / pilot-ready",
+      "repo": "https://github.com/leadingproblemsolver/ulomis-continuity-companion",
+      "proof_surface": "https://ulomis.netlify.app/",
+      "deployment_verification": "Connected Netlify account reports the ulomis deployment ready.",
+      "actors": ["operations", "product", "knowledge work", "practitioner", "founder"],
+      "mechanism": "Fragmented evidence becomes source-backed, uncertainty-visible, correctable continuity state for work re-entry and handoff.",
+      "claim_boundary": "No measured re-entry reduction, repeated use, durable multi-device memory or compounding-learning claim."
+    }
+  ],
+  "supporting": [
+    {
+      "id": "constraint-intelligence",
+      "name": "Constraint Intelligence Engine",
+      "proof_level": "P2 branch / draft PR",
+      "surface": "https://github.com/leadingproblemsolver/living-context-engine/pull/2",
+      "mechanism": "Production-failure evidence is normalized into root constraints, economic chains, separate constraint/intervention value and bounded action routes.",
+      "claim_boundary": "Heuristic classification/scoring; no buyer adoption or production outcome claim."
+    },
+    {
+      "id": "living-context-engine",
+      "name": "Living Context Engine",
       "proof_level": "P2",
-      "surface": "https://github.com/leadingproblemsolver/project-spec-compiler",
-      "actors": ["engineering", "product", "founder"],
-      "mechanism": "Ambiguous project intent to explicit specification and validation contracts.",
-      "workflows": ["project definition", "engineering handoff", "scope control", "release readiness"],
-      "claim_boundary": "No organization-level time-savings claim."
+      "surface": "https://github.com/leadingproblemsolver/living-context-engine",
+      "mechanism": "Project files become source-linked decisions, blockers, actions, timeline and context packs in SQLite with a read-only API.",
+      "claim_boundary": "Not autonomous memory, semantic completeness or production adoption."
     },
     {
       "id": "pathmeter",
       "name": "Pathmeter",
-      "proof_level": "P2",
+      "proof_level": "P2 + three normalized public bottleneck cases",
       "surface": "https://github.com/leadingproblemsolver/pathmeter",
-      "actors": ["engineering", "product", "founder"],
-      "mechanism": "Delivery milestone and validation instrumentation that prevents failed work being marked shipped.",
-      "workflows": ["software delivery", "cycle-time instrumentation", "release verification"],
-      "claim_boundary": "No sustained cycle-time improvement claim yet."
+      "mechanism": "Path → limiting stage → intervention → measurable discontinuity is preserved as a reusable bottleneck-analysis structure.",
+      "claim_boundary": "The three company cases are first-party published engineering evidence, not Pathmeter customer outcomes."
     },
     {
-      "id": "commercial",
-      "name": "Commercial Systems Field Experiment",
-      "proof_level": "P4",
-      "surface": "https://gtm-attempt.netlify.app/",
-      "actors": ["GTM", "founder", "buyer", "recruiting"],
-      "mechanism": "Account evidence to constraint hypothesis, buyer-facing diagnostic, outreach/discovery, and evidence-state tracking.",
-      "workflows": ["customer discovery", "outbound", "diagnostic selling", "market validation"],
-      "claim_boundary": "No paid demand, attributable meetings/pipeline, recruiting KPI or ROI claim."
+      "id": "antiwaste-ops",
+      "name": "Operational Waste Recovery / AntiWaste Ops",
+      "proof_level": "P2 repo + owner-supplied Worker deployment",
+      "repo": "https://github.com/leadingproblemsolver/operational-waste-recovery",
+      "proof_surface": "https://antiwaste-ops.leadingproblemsolver.workers.dev/",
+      "deployment_verification": "Worker URL supplied as deployed surface; independent fetch was unavailable in the packaging environment.",
+      "mechanism": "Imported AI/engineering telemetry is used to detect repeated work and create inspectable reusable context capsules.",
+      "claim_boundary": "No realized labor savings, production load, organization-wide waste or ROI claim."
     },
     {
-      "id": "impact-lens",
-      "name": "Impact Lens / Artifact Compiler",
-      "proof_level": "P2 after merge",
-      "surface": "https://github.com/leadingproblemsolver/impactwithtaha",
-      "actors": ["employer", "buyer", "collaborator", "practitioner"],
-      "mechanism": "Artifact plus viewer context to source-bounded, claim-gated, viewer-specific impact presentation.",
-      "workflows": ["portfolio evaluation", "technical communication", "sales proof", "career conversion", "artifact externalization"],
-      "claim_boundary": "No conversion lift, repeated use, generalized arbitrary-artifact understanding or economic impact claim."
+      "id": "quicklarity",
+      "name": "Quickarity",
+      "proof_level": "P2 repo + owner-supplied Worker deployment",
+      "repo": "https://github.com/leadingproblemsolver/quicklarity",
+      "proof_surface": "https://quicklarity.leadingproblemsolver.workers.dev/",
+      "deployment_verification": "Worker URL supplied as deployed surface; independent fetch was unavailable in the packaging environment.",
+      "mechanism": "Operator-supplied tasks are deterministically ranked into a bounded three-day plan with blocked/deferred state and portable exports.",
+      "claim_boundary": "No claim that score predicts commercial/operational impact or that cold users prefer the capacity model."
+    },
+    {
+      "id": "incidentops",
+      "name": "IncidentOps / Operational Incident Cognition",
+      "proof_level": "lineage + owner-supplied Worker deployment",
+      "repo": "https://github.com/leadingproblemsolver/operational-incident-cognition",
+      "proof_surface": "https://incidentops.leadingproblemsolver.workers.dev/",
+      "deployment_verification": "Worker URL supplied as deployed surface; repo lineage remains older and is not a headline proof family.",
+      "mechanism": "Case/timeline/incident cognition lineage for operational incident state and recovery.",
+      "claim_boundary": "Do not represent the older repo lineage as a completed production incident platform."
     }
+  ],
+  "internal_only": [
+    "human ownership automation kit",
+    "proof deployment queues",
+    "prompt packs",
+    "chat structuralization",
+    "subreddit routing maps",
+    "evidence-to-impact internal compilers",
+    "CV gap compilers",
+    "internal artifact routers"
   ]
 }
