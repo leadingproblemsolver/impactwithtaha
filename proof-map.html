@@ -23,15 +23,38 @@
   <nav class="nav"><a class="brand" href="/">Impact with Taha</a><a class="back" href="/lens">Contextual Lens →</a></nav>
 
   <section class="hero">
-    <div class="eyebrow">Canonical public evidence map · 19 Aug 2026</div>
+    <div class="eyebrow">Canonical public evidence map · 22 Aug 2026</div>
     <h1>Inspect the receipt,<br>not the résumé claim.</h1>
     <p>This page collapses the repository graph into the smallest employer/buyer-facing proof set. Artifact existence, reproducible behavior, deployment, external interaction and measured outcomes stay separate. Open the exact receipt that matches the work you care about.</p>
     <div class="legend"><span class="pill p2">P2 · reproducible</span><span class="pill p3">P3 · deployed</span><span class="pill p4">P4 · external interaction</span><span class="pill">P5/P6 only when measured</span></div>
   </section>
 
   <div class="rule"></div>
-  <h2>Headline proof</h2>
-  <p class="intro">These are the systems worth using in applications and serious conversations. They cover evidence reconciliation, agent reliability, technical market intelligence, implementation control, incident response and continuity without pretending unfinished outcome evidence exists.</p>
+  <h2>Externally judged technical reasoning</h2>
+  <p class="intro">These are stronger than self-authored project claims because the problem and response are owned by outside repositories. The claim is deliberately narrow: the technical framing changed or independently converged; this is not a claim that I authored or shipped the final patch.</p>
+
+  <section class="grid">
+    <article class="card">
+      <div class="meta">P4 · external issue-owner response · Agent / MCP lifecycle reliability</div>
+      <h3>Hermes Agent — deletion must be monotonic against live writers</h3>
+      <p class="body">On NousResearch/hermes-agent #81050, I reframed MCP server removal around one authority invariant: credential/cache artifacts must never create configuration identity; removal must retire the live generation before subordinate artifacts can re-persist state.</p>
+      <div class="proof"><strong>External receipt:</strong> the issue author replied “Thanks — I agree with the invariant,” corrected the original deletion framing using new logs, and identified the proposed stop/retire-live-generation step as the load-bearing missing behavior.</div>
+      <p class="boundary"><strong>Boundary:</strong> externally validated technical framing; not a claim that I owned the reporter's logs, authored the eventual patch, received maintainer approval, or shipped a production fix.</p>
+      <div class="actions"><a class="btn primary" href="https://github.com/NousResearch/hermes-agent/issues/81050#issuecomment-5219583083" target="_blank" rel="noreferrer">My invariant ↗</a><a class="btn" href="https://github.com/NousResearch/hermes-agent/issues/81050#issuecomment-5238879158" target="_blank" rel="noreferrer">External response ↗</a></div>
+    </article>
+
+    <article class="card">
+      <div class="meta">P4 · independent project triage alignment · Durable HITL / continuation identity</div>
+      <h3>Mastra — resume is continuation, not fresh delegation</h3>
+      <p class="body">For mastra-ai/mastra #15734, the invariant is that a suspended specialist workflow must resume the same child execution: specialist thread ID and workflow run ID persist, the suspension is consumed exactly once, and pre-suspend work is not replayed.</p>
+      <div class="proof"><strong>Independent receipt:</strong> Mastra's factory triage classifies the same failure as a high-severity, high-confidence @mastra/core bug and calls for persisting/restoring specialist continuation identity with workflow-level coverage.</div>
+      <p class="boundary"><strong>Boundary:</strong> external triage alignment with the continuation model; not a claim of patch authorship, merge, or production remediation.</p>
+      <div class="actions"><a class="btn primary" href="https://github.com/mastra-ai/mastra/issues/15734#issuecomment-5219353964" target="_blank" rel="noreferrer">Continuation invariant ↗</a><a class="btn" href="https://github.com/mastra-ai/mastra/issues/15734#issuecomment-5355691179" target="_blank" rel="noreferrer">Mastra triage ↗</a></div>
+    </article>
+  </section>
+
+  <h2>Headline system proof</h2>
+  <p class="intro">These systems cover evidence reconciliation, agent reliability, technical market intelligence, implementation control, incident response and continuity without pretending unfinished outcome evidence exists.</p>
 
   <section class="grid">
     <article class="card">
@@ -56,8 +79,8 @@
       <div class="meta">P2 + real public corpus · GTM Engineering / Technical Growth</div>
       <h3>SignalOps Workbench</h3>
       <p class="body">Observed public evidence stays distinct from interpretation, is scored deterministically, constrained by channel/permission policy, and persisted as restartable action state rather than disappearing into a chat response.</p>
-      <div class="proof"><strong>New public receipt:</strong> 20 real LangChain issue surfaces → 20 durable events → 19 public_reply + 1 save. No DM/call escalation occurred because private escalation requires a prior public response.</div>
-      <p class="boundary"><strong>Boundary:</strong> real-corpus policy execution, not ranking accuracy, maintainer response, meetings, pipeline, revenue or live CRM automation.</p>
+      <div class="proof"><strong>Public receipt:</strong> 20 real LangChain issue surfaces → 20 durable events → 19 public_reply + 1 save. No DM/call escalation occurred because private escalation requires a prior public response.</div>
+      <p class="boundary"><strong>Boundary:</strong> real-corpus policy execution, not ranking accuracy, maintainer response, meetings, pipeline, revenue or live CRM automation. A downstream action/response receipt is still open.</p>
       <div class="actions"><a class="btn primary" href="https://github.com/leadingproblemsolver/signalops-workbench/blob/main/docs/REAL_RUN_20.md" target="_blank" rel="noreferrer">Real-run receipt ↗</a><a class="btn" href="https://github.com/leadingproblemsolver/signalops-workbench" target="_blank" rel="noreferrer">Repository ↗</a></div>
     </article>
 
@@ -71,21 +94,21 @@
     </article>
 
     <article class="card">
-      <div class="meta">P2 repo + supplied deployed proof · Specification control</div>
+      <div class="meta">P2 + merged CI-verified role-proof compiler · Specification control</div>
       <h3>Project Specification Compiler</h3>
-      <p class="body">Engineering project intent becomes machine-checkable mandatory sections, canonical status vocabulary, bundle equality, registry/repository checks and deterministic portfolio reporting.</p>
-      <div class="proof"><strong>Live proof supplied:</strong> Target Spec Compiler proof surface plus the runnable public CLI repository.</div>
-      <p class="boundary"><strong>Boundary:</strong> deterministic specification control does not yet establish organization-level time savings or causal rework reduction.</p>
-      <div class="actions"><a class="btn primary" href="https://targetspeccompiler-proof.netlify.app/" target="_blank" rel="noreferrer">Live proof ↗</a><a class="btn" href="https://github.com/leadingproblemsolver/project-spec-compiler" target="_blank" rel="noreferrer">Repository ↗</a></div>
+      <p class="body">Engineering project intent becomes machine-checkable mandatory sections, canonical status vocabulary, bundle equality, registry/repository checks and deterministic portfolio reporting. Live employer requirements can now also be preserved as exact excerpts and compiled into bounded evidence, proof gaps and next receipts.</p>
+      <div class="proof"><strong>Current receipt:</strong> Target Spec Compiler deployed proof + public CLI; role-target PR #1 was repaired at the test dependency boundary, passed GitHub Actions CI run #8 and was squash-merged on 22 Aug 2026.</div>
+      <p class="boundary"><strong>Boundary:</strong> the compiler does not determine eligibility, invent experience, generate proof, or establish organization-level time savings.</p>
+      <div class="actions"><a class="btn primary" href="https://targetspeccompiler-proof.netlify.app/" target="_blank" rel="noreferrer">Live proof ↗</a><a class="btn" href="https://github.com/leadingproblemsolver/project-spec-compiler" target="_blank" rel="noreferrer">Repository ↗</a><a class="btn" href="https://github.com/leadingproblemsolver/project-spec-compiler/pull/1" target="_blank" rel="noreferrer">Merged role compiler ↗</a></div>
     </article>
 
     <article class="card">
       <div class="meta">P2 · AI Ops / Data platform / Human authority</div>
       <h3>Reality Handoff Agent</h3>
       <p class="body">DataHub evidence → deterministic gate → explicit execution contract → human approval → one bounded write → independent reread → durable handoff → fresh recovery.</p>
-      <div class="proof"><strong>Repository evidence:</strong> 55/55 deterministic/unit/API/frontend-contract tests, compile/syntax checks and secret scan are recorded in the public project.</div>
-      <p class="boundary"><strong>Boundary:</strong> live DataHub P0–P4 remains pending; no live mutation/recovery success is represented as complete.</p>
-      <div class="actions"><a class="btn primary" href="https://github.com/leadingproblemsolver/realityhandoff-agent" target="_blank" rel="noreferrer">Inspect system ↗</a></div>
+      <div class="proof"><strong>Repository evidence:</strong> 55/55 deterministic/unit/API/frontend-contract tests plus compile/syntax/secret checks; the judge/evidence standard is merged into main.</div>
+      <p class="boundary"><strong>Boundary:</strong> live DataHub P0–P4 is explicitly blocked until a real GMS URL, fresh PAT and exact non-sensitive target URN are supplied. No live mutation/recovery success is represented as complete.</p>
+      <div class="actions"><a class="btn primary" href="https://github.com/leadingproblemsolver/realityhandoff-agent" target="_blank" rel="noreferrer">Inspect system ↗</a><a class="btn" href="https://github.com/leadingproblemsolver/realityhandoff-agent/blob/main/docs/JUDGE_GUIDE.md" target="_blank" rel="noreferrer">Judge/evidence gate ↗</a></div>
     </article>
 
     <article class="card">
@@ -98,23 +121,23 @@
     </article>
 
     <article class="card">
-      <div class="meta">P3 / pilot-ready · Continuity / Knowledge work</div>
+      <div class="meta">P3 deployment + browser-proof revalidation pending · Continuity / Knowledge work</div>
       <h3>Ulomis Continuity Companion</h3>
-      <p class="body">Fragmented work evidence becomes source-backed, uncertainty-visible, correctable continuity state with no-signup-before-value behavior.</p>
-      <div class="proof"><strong>Deployment:</strong> the connected Netlify account reports <code>ulomis</code> ready; public repository work preserves the product lineage and claim boundaries.</div>
-      <p class="boundary"><strong>Boundary:</strong> no measured re-entry reduction, repeated use, durable multi-device memory or compounding learning claim.</p>
-      <div class="actions"><a class="btn primary" href="https://ulomis.netlify.app/" target="_blank" rel="noreferrer">Live surface ↗</a><a class="btn" href="https://github.com/leadingproblemsolver/ulomis-continuity-companion" target="_blank" rel="noreferrer">Repository ↗</a></div>
+      <p class="body">Fragmented work evidence becomes source-backed, uncertainty-visible, correctable continuity state with no-signup-before-value behavior. The real-thread path deterministically surfaces only explicit state, decisions, open loops and next-action wording already present in the input.</p>
+      <div class="proof"><strong>Current verification state:</strong> app build/startup passed in the acquisition-proof workflow; the browser proof failed on a duplicate-text locator, not product startup. The locator was narrowed on commit <code>72b20b3</code>; a fresh passing 1280/390/320 browser artifact is still required before calling this path browser-verified.</div>
+      <p class="boundary"><strong>Boundary:</strong> no measured re-entry reduction, repeated external use, durable multi-device memory or compounding learning claim; do not promote the patched harness to browser-verified until the new artifact passes.</p>
+      <div class="actions"><a class="btn primary" href="https://ulomis.netlify.app/" target="_blank" rel="noreferrer">Live surface ↗</a><a class="btn" href="https://github.com/leadingproblemsolver/ulomis-continuity-companion/pull/1" target="_blank" rel="noreferrer">Acquisition proof PR ↗</a></div>
     </article>
   </section>
 
   <h2>Use only two receipts per application</h2>
   <section class="pairings">
-    <div class="pair"><strong>AI Ops</strong><span>RealityLatch + SignalOps</span></div>
-    <div class="pair"><strong>Implementation / Solutions</strong><span>RealityLatch + Reality Handoff or TraceCrumb</span></div>
+    <div class="pair"><strong>AI / Agent Reliability</strong><span>Hermes external judgment + DriftGuard</span></div>
+    <div class="pair"><strong>Durable Agent State / HITL</strong><span>Mastra continuation receipt + Reality Handoff</span></div>
+    <div class="pair"><strong>Implementation / Solutions</strong><span>RealityLatch + Project Spec Compiler or Reality Handoff</span></div>
     <div class="pair"><strong>GTM Systems / RevOps</strong><span>SignalOps + DevTools Signal Engine</span></div>
-    <div class="pair"><strong>Technical Growth</strong><span>DevTools / Constraint Intelligence + field evidence</span></div>
-    <div class="pair"><strong>AI Reliability</strong><span>DriftGuard + Reality Handoff</span></div>
-    <div class="pair"><strong>Developer Productivity</strong><span>Operational Waste Recovery + Pathmeter</span></div>
+    <div class="pair"><strong>Technical Growth</strong><span>External issue judgment + DevTools / Constraint Intelligence</span></div>
+    <div class="pair"><strong>Developer Productivity / SRE</strong><span>TraceCrumb + Pathmeter or DriftGuard</span></div>
   </section>
 
   <h2>Supporting proof — useful, not headline projects</h2>
@@ -136,7 +159,7 @@
     <p class="small">Evidence ladder: IMPLEMENTED → REPRODUCIBLE → DEPLOYED → EXTERNAL INTERACTION → MEASURED OUTCOME → ECONOMIC OUTCOME. Never collapse these states.</p>
   </div>
 
-  <div class="footer">Canonical registry: <a href="https://github.com/leadingproblemsolver/impactwithtaha/blob/main/ARTIFACT_REGISTRY.json" target="_blank" rel="noreferrer">ARTIFACT_REGISTRY.json ↗</a> · GitHub: <a href="https://github.com/leadingproblemsolver" target="_blank" rel="noreferrer">leadingproblemsolver ↗</a></div>
+  <div class="footer">Closure log: <a href="https://github.com/leadingproblemsolver/impactwithtaha/blob/main/docs/GAP_CLOSURE_2026-08-22.md" target="_blank" rel="noreferrer">22 Aug gap closure ↗</a> · Canonical registry: <a href="https://github.com/leadingproblemsolver/impactwithtaha/blob/main/ARTIFACT_REGISTRY.json" target="_blank" rel="noreferrer">ARTIFACT_REGISTRY.json ↗</a> · GitHub: <a href="https://github.com/leadingproblemsolver" target="_blank" rel="noreferrer">leadingproblemsolver ↗</a></div>
 </div>
 </body>
 </html>
