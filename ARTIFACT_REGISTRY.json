@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0",
+  "version": "2.1.0",
   "proof_ladder": {
     "P1": "artifact exists",
     "P2": "behavior is reproducible / inspectable",
@@ -8,6 +8,30 @@
     "P5": "measured behavior or operational outcome",
     "P6": "attributable economic outcome"
   },
+  "external_judgment": [
+    {
+      "id": "hermes-agent-81050",
+      "name": "NousResearch Hermes Agent #81050 - configuration identity / removal lifecycle",
+      "proof_level": "P4 external issue-owner response",
+      "source": "https://github.com/NousResearch/hermes-agent/issues/81050#issuecomment-5219583083",
+      "external_response": "https://github.com/NousResearch/hermes-agent/issues/81050#issuecomment-5238879158",
+      "actors": ["agent infrastructure", "MCP", "reliability", "platform engineering"],
+      "mechanism": "Credential/cache artifacts must never create configuration identity; server removal must retire the live generation before subordinate artifacts can re-persist state.",
+      "verified_now": "The issue author explicitly agreed with the invariant, corrected the original deletion-root-cause framing from new logs, and identified the stop/retire-live-generation step as load-bearing.",
+      "claim_boundary": "External technical-judgment receipt only; no patch-authorship, maintainer-merge, production-remediation, or adoption claim."
+    },
+    {
+      "id": "mastra-15734",
+      "name": "Mastra #15734 - durable HITL continuation identity",
+      "proof_level": "P4 external triage alignment",
+      "source": "https://github.com/mastra-ai/mastra/issues/15734#issuecomment-5219353964",
+      "external_response": "https://github.com/mastra-ai/mastra/issues/15734#issuecomment-5355691179",
+      "actors": ["agent infrastructure", "durable execution", "HITL", "workflow reliability"],
+      "mechanism": "Resume is an addressable continuation of the original specialist execution: preserve specialist thread/workflow run identity, consume suspension exactly once, and do not replay pre-suspend work.",
+      "verified_now": "Mastra factory triage independently classifies the same failure as a high-severity, high-confidence @mastra/core bug and calls for persisting/restoring specialist continuation identity with workflow-level coverage.",
+      "claim_boundary": "External triage alignment; no claim of patch ownership, merge, or production remediation."
+    }
+  ],
   "headline": [
     {
       "id": "realitylatch",
@@ -38,8 +62,8 @@
       "receipt": "https://github.com/leadingproblemsolver/signalops-workbench/blob/main/docs/REAL_RUN_20.md",
       "actors": ["GTM engineering", "technical growth", "RevOps", "solutions", "founder"],
       "mechanism": "Observed public evidence stays distinct from interpretation, receives deterministic relevance/action state, and is constrained by permission-aware escalation rules.",
-      "verified_now": "20 real public LangChain issue surfaces produced 20 durable events: 19 public_reply and 1 save; no private escalation was permitted without a prior public response.",
-      "claim_boundary": "No ranking-accuracy, maintainer-response, live CRM, meeting, pipeline, revenue or adoption claim."
+      "verified_now": "20 real public LangChain issue surfaces produced 20 durable events: 19 public_reply and 1 save; no private escalation was permitted without a prior public response. MicroSaaS v0 and bounded Clay/role-proof loops are merged; stale parallel PR #4 was closed as superseded.",
+      "claim_boundary": "No ranking-accuracy, maintainer-response, live CRM, meeting, pipeline, revenue or adoption claim. The next required proof is a real downstream action plus response/non-response receipt."
     },
     {
       "id": "devtools-signal-engine",
@@ -55,23 +79,24 @@
     {
       "id": "project-spec-compiler",
       "name": "Project Specification Compiler / Target Spec Compiler",
-      "proof_level": "P2 repo + owner-supplied deployed proof surface",
+      "proof_level": "P2 repo + owner-supplied deployed proof surface + merged CI-verified role compiler",
       "repo": "https://github.com/leadingproblemsolver/project-spec-compiler",
       "proof_surface": "https://targetspeccompiler-proof.netlify.app/",
       "deployment_verification": "URL supplied as live proof surface; the packaging browser could not independently fetch this Netlify site.",
-      "actors": ["engineering", "implementation", "product", "founder"],
-      "mechanism": "Ambiguous project intent becomes machine-checkable specification structure, status vocabulary, bundle equality and deterministic validation/reporting contracts.",
-      "claim_boundary": "No organization-level time-savings or reduced-rework claim without repeated before/after use."
+      "actors": ["engineering", "implementation", "product", "founder", "hiring proof"],
+      "mechanism": "Ambiguous project intent becomes machine-checkable specification structure, status vocabulary, bundle equality and deterministic validation/reporting contracts. Employer requirements can also be preserved as exact source excerpts and mapped to bounded evidence, missing proof and next external receipts.",
+      "verified_now": "Role-target PR #1 was repaired at the vendored-YAML test boundary, GitHub Actions CI run #8 passed, and the PR squash-merged on 2026-08-22.",
+      "claim_boundary": "The compiler does not determine eligibility, invent experience, generate proof, or establish organization-level time savings without repeated external use."
     },
     {
       "id": "reality-handoff",
       "name": "Reality Handoff Agent",
-      "proof_level": "P2",
+      "proof_level": "P2 / offline validated; live external dependency blocked",
       "repo": "https://github.com/leadingproblemsolver/realityhandoff-agent",
       "actors": ["AI Ops", "agent infrastructure", "data platform", "solutions", "engineering"],
-      "mechanism": "DataHub evidence → deterministic gate → explicit execution contract → human approval → one bounded mutation → independent re-read → durable recovery.",
-      "verified_now": "Repository packaging records 55/55 deterministic/unit/API/frontend-contract tests plus compile/syntax/secret-scan passes.",
-      "claim_boundary": "Live DataHub P0-P4 is still pending; no live mutation/recovery success is claimed until those receipts exist."
+      "mechanism": "DataHub evidence -> deterministic gate -> explicit execution contract -> human approval -> one bounded mutation -> independent re-read -> durable recovery.",
+      "verified_now": "Repository packaging records 55/55 deterministic/unit/API/frontend-contract tests plus compile/syntax/secret-scan passes; judge/evidence packaging is merged into main.",
+      "claim_boundary": "Live DataHub P0-P4 is blocked until a real GMS URL, fresh PAT and exact non-sensitive target URN are supplied; no live mutation/recovery success is claimed until those receipts exist."
     },
     {
       "id": "tracecrumb",
@@ -87,13 +112,13 @@
     {
       "id": "ulomis",
       "name": "Ulomis Continuity Companion",
-      "proof_level": "P3 / pilot-ready",
+      "proof_level": "P3 deployed surface / real-thread browser revalidation pending",
       "repo": "https://github.com/leadingproblemsolver/ulomis-continuity-companion",
       "proof_surface": "https://ulomis.netlify.app/",
-      "deployment_verification": "Connected Netlify account reports the ulomis deployment ready.",
+      "deployment_verification": "Deployment exists in the prior connected Netlify evidence. In the acquisition-proof workflow, app build/startup passed but the browser proof failed on a duplicate-text locator; commit 72b20b3 narrows the proof locator and a fresh passing 1280/390/320 artifact is still required.",
       "actors": ["operations", "product", "knowledge work", "practitioner", "founder"],
-      "mechanism": "Fragmented evidence becomes source-backed, uncertainty-visible, correctable continuity state for work re-entry and handoff.",
-      "claim_boundary": "No measured re-entry reduction, repeated use, durable multi-device memory or compounding-learning claim."
+      "mechanism": "Fragmented evidence becomes source-backed, uncertainty-visible, correctable continuity state for work re-entry and handoff; the real-thread path extracts only explicit state/decisions/open loops/next action from supplied text.",
+      "claim_boundary": "Do not call the real-thread path browser-verified until the new artifact passes. No measured re-entry reduction, repeated use, durable multi-device memory or compounding-learning claim."
     }
   ],
   "supporting": [
@@ -118,7 +143,7 @@
       "name": "Pathmeter",
       "proof_level": "P2 + three normalized public bottleneck cases",
       "surface": "https://github.com/leadingproblemsolver/pathmeter",
-      "mechanism": "Path → limiting stage → intervention → measurable discontinuity is preserved as a reusable bottleneck-analysis structure.",
+      "mechanism": "Path -> limiting stage -> intervention -> measurable discontinuity is preserved as a reusable bottleneck-analysis structure.",
       "claim_boundary": "The three company cases are first-party published engineering evidence, not Pathmeter customer outcomes."
     },
     {
