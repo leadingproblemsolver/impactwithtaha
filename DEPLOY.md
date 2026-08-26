@@ -1,43 +1,43 @@
-# Netlify Deployment Contract
+# Deployment Contract
 
-This portfolio is a **static, route-aware site**. No package install, framework build, Functions runtime, or environment variables are required.
+## Canonical public runtime
 
-## Git-based deploy settings
-- Branch: `main`
-- Base directory: blank
-- Build command: blank
-- Publish directory: `.`
-- Functions directory: blank
-- Environment variables: none
+The current public target is **Vercel** (`impactwithtaha.vercel.app`). `vercel.json` is therefore the authoritative route/runtime contract.
 
-`netlify.toml` sets the publish directory. `_redirects` force-rewrites every request to `index.html`, where the client router renders the requested stable URL.
+### Vercel behavior
+- `/`, `/lens`, `/work`, `/proof-status`, `/method`, `/resume`, `/start` -> `impact-v2.html`
+- `/api/analyze` -> Vercel Node function for bounded public-URL retrieval and optional model interpretation
+- `/api/event` -> privacy-bounded high-information event receipt in Vercel logs
+- legacy `/proof/*` routes -> existing `index.html` SPA for backwards compatibility
+- static files (registry, proof map, styles, older proof pages) remain directly addressable
 
-## Direct-route acceptance gate
-Verify in fresh tabs, including refresh:
-- `/`
-- `/work`
-- `/execution`
-- `/proof-status`
-- `/method`
-- `/resume`
-- `/start`
-- `/links`
-- `/proof/commercial-systems`
-- `/proof/driftguard`
-- `/proof/signalops`
-- `/proof/tracecrumb`
-- `/proof/project-spec-compiler`
-- `/proof/pathmeter`
-- `/proof/multi-repo-hardening`
+### Environment
+Core viewer routing, canonical-registry compilation, pasted-text analysis, PDF extraction and DOCX extraction do not require a model key.
 
-## User-journey gate
-- Homepage makes positioning and proof status understandable in one screen.
-- Every selected project is discoverable from `/work` and directly shareable.
-- Every proof view has a return path and proof-boundary path.
-- `/execution` exposes the live GTM landing, demo, and intake URLs.
-- `/resume` works as a stable web-CV surface even without a binary download.
-- `/start` provides a clear contact/next action.
-- Mobile keeps navigation and primary CTAs usable.
-- No unsupported client, revenue, pipeline, production, or ROI claims are introduced.
+Optional semantic enhancement / image analysis:
 
-Use `PRODUCT_COMPLETENESS.md`, `CLAIM_REGISTRY.md`, and `GAPS.md` as release gates for future edits.
+```text
+OPENAI_API_KEY
+OPENAI_MODEL (optional; defaults to gpt-5)
+```
+
+No model secret belongs in browser code.
+
+## Secondary Netlify compatibility
+
+The existing Netlify configuration remains in the repository for the older deployment surface. Do not infer that Netlify Forms or Netlify Functions are active on the Vercel URL.
+
+## Acceptance gate
+
+Verify on the Vercel preview before merge:
+1. `/` and `/lens` render the v2 compiler on direct load + refresh.
+2. `/work` reads `ARTIFACT_REGISTRY.json` and includes external-judgment receipts.
+3. employer flow accepts a role + pasted JD and returns evidence matches.
+4. company/JD URL retrieval reaches `/api/analyze` and rejects local/private targets.
+5. pasted text, PDF and DOCX return source-linked observed/evidence items without a model key.
+6. image path fails honestly without a key and works with a configured key.
+7. referral sharing is disabled before first value; referred arrival and referred first value remain separate states.
+8. `/api/event` accepts only allowlisted metadata and never artifact body/free text.
+9. legacy `/proof/*` URLs still resolve.
+
+Do not upgrade behavioral, conversion, adoption, ROI, hiring, or economic claims from deployment alone.
