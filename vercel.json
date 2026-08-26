@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {"key":"X-Content-Type-Options","value":"nosniff"},
+        {"key":"Referrer-Policy","value":"strict-origin-when-cross-origin"},
+        {"key":"Permissions-Policy","value":"camera=(), microphone=(), geolocation=()"},
+        {"key":"Content-Security-Policy","value":"default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self'; worker-src 'self' blob: https://cdnjs.cloudflare.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"}
+      ]
+    }
+  ],
+  "routes": [
+    {"handle":"filesystem"},
+    {"src":"/proof/.*","dest":"/impact-v2.html"},
+    {"src":"/(lens|work|proof-status|method|resume|start|links)$","dest":"/impact-v2.html"},
+    {"src":"/$","dest":"/impact-v2.html"}
+  ]
+}
