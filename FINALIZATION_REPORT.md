@@ -1,64 +1,56 @@
-# Impact Lens Finalization Report
+# Impact Lens Finalization Report — V2
 
-## Finalized branch objective
+## Observable target
 
-`impactwithtaha` is now specified and implemented as the third Ulomis branch:
+`impactwithtaha` is a self-selling, evidence-bounded portfolio/product:
 
-> arbitrary artifact + viewer context → evidence-grounded impact view
+> observer or artifact → owned workflow → strongest current evidence → explicit boundary → consequential next action
 
-The product remains a public proof room, but the primary interaction is no longer “browse my projects.” It is “tell me who you are, then make the evidence answer to your reality.”
+The canonical public evidence corpus is `ARTIFACT_REGISTRY.json`; frontend ranking no longer depends on a stale hand-maintained project list.
 
-## Implemented
+## V2 implemented
 
-- lens-first homepage and `/lens` route;
-- role/company/intent/workflow context capture;
-- deterministic role-family and artifact relevance scoring;
-- distinct employer/buyer/collaborator/practitioner relationship assumptions;
-- source / inference / boundary presentation grammar;
-- raw proof room retained;
-- Ulomis continuity/correction lineage surfaced;
-- local text/structured artifact parsing;
-- PDF extraction path through PDF.js;
-- DOCX extraction path through Mammoth;
-- public URL server retrieval with obvious private-network blocking;
-- optional OpenAI Responses API interpretation behind Netlify Functions;
-- optional image vision path;
-- deterministic first-value fallback when model enhancement is unavailable;
-- high-information telemetry via local state + Netlify Forms without artifact body;
-- referral-share / referral-conversion distinction;
-- post-value implementation-protocol reveal;
-- route/back/refresh compatibility through static SPA rewrite;
-- public claim registry updated.
+- Vercel-first runtime and route contract;
+- canonical registry compilation, including external-judgment receipts;
+- employer flow with role, company/team source, JD URL, or pasted JD;
+- company names treated as context only unless a source URL is supplied;
+- distinct employer / buyer / collaborator / practitioner presentation grammar;
+- distinct terminal CTA per segment;
+- source-linked local artifact ontology: claims, constraints, evidence, workflow signals, metrics;
+- TXT/Markdown/JSON/YAML/CSV/HTML/PDF/DOCX local parsing;
+- bounded public URL retrieval through `/api/analyze`;
+- optional OpenAI interpretation / image vision behind the server boundary;
+- exportable impact packet for practitioner use;
+- referral sharing only after first value;
+- referral arrival and referred first value recorded as separate states;
+- privacy-bounded event receipts through `/api/event`;
+- legacy proof routes preserved through the existing SPA.
 
-## Human configuration still required
+## Claim state
 
-To enable semantic image and model-enhanced artifact interpretation on Netlify:
+This branch proves implementation/reproducibility only until the Vercel preview is independently exercised.
 
-```text
-OPENAI_API_KEY
-OPENAI_MODEL (optional; defaults to gpt-5)
-```
+It does not prove:
+- hiring conversion lift;
+- buyer conversion or payment;
+- generalized artifact-understanding quality;
+- repeated external use;
+- referral conversion quality;
+- time/cost/ROI improvement;
+- production-grade crawler reliability;
+- company-specific understanding without supplied source material.
 
-The core role-tailoring, artifact registry, local parsing and deterministic mapping do not depend on the key.
+## Highest-information post-deploy gate
 
-## Evidence state after merge
+Run one cold employer/evaluator through:
 
-Implemented/reproducible vertical slice: **P2**.
-Deployed state becomes **P3** only after the branch is merged and Netlify deploy is independently verified.
-Behavioral validation remains open.
+1. land on `/`;
+2. open `/lens`;
+3. provide role + JD/company source;
+4. understand the top evidence matches and proof boundaries;
+5. open one external/reproducible receipt;
+6. correct one assumption if needed;
+7. submit one real artifact;
+8. take the compiled next action without operator explanation.
 
-## Next external evidence event
-
-Use a cold visitor with no project context.
-
-Pass only if they can:
-
-1. self-identify;
-2. understand the top three relevant mechanisms;
-3. open one proof surface;
-4. correct one assumption if needed;
-5. submit one real artifact;
-6. distinguish observed facts from inference and claim boundary;
-7. take a next action without explanation from the operator.
-
-Do not add more integrations until that loop produces real behavior.
+Then inspect Vercel event receipts. Do not add broader integrations until that loop creates a real external receipt or falsifies a concrete assumption.

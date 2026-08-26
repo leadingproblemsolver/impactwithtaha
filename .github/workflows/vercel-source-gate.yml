@@ -1,0 +1,40 @@
+name: Vercel Source Gate
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  source-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate JavaScript syntax
+        run: |
+          node --check api/analyze.js
+          node --check api/event.js
+          node --check impact-v2.js
+      - name: Validate Vercel contract
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          const config = JSON.parse(fs.readFileSync('vercel.json', 'utf8'));
+          if (!config.regions?.includes('dxb1')) throw new Error('dxb1 region missing');
+          if (!config.functions?.['api/analyze.js']) throw new Error('api/analyze.js function contract missing');
+          const routes = config.routes || [];
+          if (!routes.some(r => r.src === '^/$' && r.dest === '/impact-v2.html')) throw new Error('root V2 route missing');
+          if (fs.existsSync('api/analyze.mjs')) throw new Error('obsolete empty api/analyze.mjs still present');
+          NODE
+      - name: Validate canonical V2 files
+        run: |
+          test -s api/analyze.js
+          test -s api/event.js
+          test -s impact-v2.html
+          test -s impact-v2.js
+          test -s ARTIFACT_REGISTRY.json

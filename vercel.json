@@ -1,9 +1,31 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
   "regions": ["dxb1"],
   "functions": {
-    "api/analyze.mjs": {
+    "api/analyze.js": {
       "maxDuration": 60
+    },
+    "api/event.js": {
+      "maxDuration": 10
     }
-  }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {"key":"X-Content-Type-Options","value":"nosniff"},
+        {"key":"Referrer-Policy","value":"strict-origin-when-cross-origin"},
+        {"key":"Permissions-Policy","value":"camera=(), microphone=(), geolocation=()"},
+        {"key":"Content-Security-Policy","value":"default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self'; worker-src 'self' blob: https://cdnjs.cloudflare.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"}
+      ]
+    }
+  ],
+  "routes": [
+    {"src":"^/$","dest":"/impact-v2.html"},
+    {"src":"^/(lens|work|proof-status|method|resume|start)$","dest":"/impact-v2.html"},
+    {"src":"^/proof/.*","dest":"/index.html"},
+    {"handle":"filesystem"},
+    {"src":"/.*","dest":"/index.html"}
+  ]
 }
