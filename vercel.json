@@ -12,9 +12,10 @@
     }
   ],
   "routes": [
+    {"src":"^/$","dest":"/impact-v2.html"},
+    {"src":"^/(lens|work|proof-status|method|resume|start)$","dest":"/impact-v2.html"},
+    {"src":"^/proof/.*","dest":"/index.html"},
     {"handle":"filesystem"},
-    {"src":"/proof/.*","dest":"/impact-v2.html"},
-    {"src":"/(lens|work|proof-status|method|resume|start|links)$","dest":"/impact-v2.html"},
-    {"src":"/$","dest":"/impact-v2.html"}
+    {"src":"/.*","dest":"/index.html"}
   ]
 }
