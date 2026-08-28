@@ -4,10 +4,16 @@
   "regions": ["dxb1"],
   "functions": {
     "api/analyze.js": {
-      "maxDuration": 60
+      "maxDuration": 60,
+      "supportsCancellation": true
     },
     "api/event.js": {
-      "maxDuration": 10
+      "maxDuration": 10,
+      "supportsCancellation": true
+    },
+    "api/health.js": {
+      "maxDuration": 10,
+      "supportsCancellation": true
     }
   },
   "headers": [
@@ -24,6 +30,7 @@
   "routes": [
     {"src":"^/$","dest":"/impact-v2.html"},
     {"src":"^/(lens|work|proof-status|method|resume|start)$","dest":"/impact-v2.html"},
+    {"src":"^/proof-map$","dest":"/proof-map.html"},
     {"src":"^/proof/.*","dest":"/index.html"},
     {"handle":"filesystem"},
     {"src":"/.*","dest":"/index.html"}
