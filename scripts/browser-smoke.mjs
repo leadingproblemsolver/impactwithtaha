@@ -48,14 +48,16 @@ try {
   await page.goto(`${base}/proof/driftguard`, { waitUntil: 'domcontentloaded' });
   await page.waitForSelector('h1');
   if (!/DriftGuard/i.test(await page.locator('h1').innerText())) throw new Error('legacy proof route did not resolve to canonical evidence');
+  await context.close();
 
-  const mobile = await browser.newPage({ viewport: { width: 390, height: 844 } });
+  const mobileContext = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const mobile = await mobileContext.newPage();
   mobile.on('pageerror', error => errors.push(`mobile pageerror: ${error.message}`));
   await mobile.goto(`${base}/lens`, { waitUntil: 'domcontentloaded' });
   await mobile.waitForSelector('#generate');
   const overflow = await mobile.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   if (overflow > 2) throw new Error(`mobile horizontal overflow detected (${overflow}px)`);
-  await mobile.close();
+  await mobileContext.close();
 
   const materialErrors = errors.filter(error => !/favicon|Failed to load resource.*404/i.test(error));
   if (materialErrors.length) throw new Error(`browser console errors: ${materialErrors.join(' | ')}`);
