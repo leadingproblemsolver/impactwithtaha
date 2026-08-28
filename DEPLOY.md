@@ -1,104 +1,129 @@
-# Production Deployment Contract — Impact V3 hardening
+# Production Deployment Contract — Impact V3
 
 ## Canonical target
 
 Production: `https://impactwithtaha.vercel.app`
 
-Vercel is the authoritative runtime. `vercel.json` owns the route, region, function-duration, cancellation and security-header contract.
+Vercel is the authoritative runtime. The product is deliberately local/deterministic first; the LLM is an additive interpretation layer and cannot upgrade proof.
 
-## Runtime
+## Runtime + routes
 
-- Node.js: **22.x** (pinned in `package.json`)
-- Primary region: **`dxb1`**
-- Static/browser runtime: `impact-v2.html` + `impact-v2.js`
-- Additive LLM tailoring layer: `impact-llm.js`
-- Canonical evidence: `ARTIFACT_REGISTRY.json`
+- Node.js: **22.x** (`package.json`)
+- Primary function region: **`dxb1`**
+- Browser runtime: `impact-v2.html` + `impact-v2.js`
+- Additive model layer: `impact-llm.js`
+- Canonical evidence source: `ARTIFACT_REGISTRY.json`
 
-The model layer is deliberately additive. A model failure must not remove the deterministic portfolio/evidence path.
+Canonical V2 routes:
+
+```text
+/
+/lens
+/work
+/proof-status
+/proof-map
+/method
+/resume
+/start
+/proof/*
+```
+
+`/proof-map` and legacy `/proof/*` now render from the same V2 registry-backed runtime instead of a second hand-maintained portfolio engine. Old static files may remain in the repository as historical artifacts, but they are not the canonical routed surface.
 
 ## Vercel Functions
 
 ### `api/analyze.js`
 
-Purpose:
-- bounded public website/JD/repo retrieval;
-- private-network / SSRF rejection with DNS resolution and pinned public IP lookup;
-- deterministic extraction even if the model fails;
-- optional artifact interpretation and image vision;
-- optional target-context tailoring against the canonical evidence registry.
+Contract:
 
-Vercel contract:
-- Node 22.x
-- region `dxb1`
-- `maxDuration: 60`
-- `supportsCancellation: true`
+```text
+Node: 22.x
+Region: dxb1
+maxDuration: 60
+supportsCancellation: true
+```
 
-Supported `kind` values:
-- `url` — retrieve a public URL; model enhancement optional;
-- `enhance` — interpret supplied artifact text;
-- `image` — semantic image interpretation; requires model key;
-- `tailor` — interpret viewer/JD/company/workflow context against `ARTIFACT_REGISTRY.json` and return registry-bounded evidence matches.
+Responsibilities:
+- public website/JD/repo retrieval;
+- DNS-resolved + pinned-public-IP SSRF boundary;
+- private/local/special IPv4+IPv6 rejection;
+- redirect, port, content-type, byte and timeout bounds;
+- deterministic source extraction that survives model failure;
+- optional text/image interpretation;
+- registry-bounded target tailoring.
 
-For smoke tests, `options.model=false` keeps public URL extraction deterministic and avoids model spend.
+Supported request kinds:
+
+```text
+url       public URL retrieval; model OFF unless options.model=true
+enhance   optional interpretation of supplied artifact text
+image     semantic image interpretation; model required
+tailor    role/JD/company/workflow context → canonical evidence matches
+```
+
+The deterministic viewer-context URL fetches explicitly use `options.model=false`, so company/JD retrieval does not create hidden duplicate model calls. Explicit artifact URL analysis may set `options.model=true`.
 
 ### `api/event.js`
 
-Purpose:
-- accept only allowlisted, non-sensitive behavioral events;
-- write safe event receipts to Vercel logs;
+Contract:
+
+```text
+Node: 22.x
+Region: dxb1
+maxDuration: 10
+supportsCancellation: true
+```
+
+Responsibilities:
+- allowlist non-sensitive behavioral events;
+- cap payload size;
+- write sanitized receipts to Vercel logs;
 - optionally forward the same sanitized event to a durable HTTPS sink.
 
-Vercel contract:
-- Node 22.x
-- region `dxb1`
-- `maxDuration: 10`
-- `supportsCancellation: true`
-
-Never send artifact bodies, JD text, free-text problems, image bytes, credentials or model prompts to this endpoint.
+Forbidden telemetry includes artifact/JD/resume bodies, workflow free text, image bytes, credentials and prompts.
 
 ### `api/health.js`
 
-Purpose:
-- expose deployment/runtime state without secrets;
-- identify the deployed Git SHA;
-- expose whether the model and optional event sink are configured;
-- make production smoke verification deterministic.
+Contract:
 
-Vercel contract:
-- Node 22.x
-- region `dxb1`
-- `maxDuration: 10`
-- `supportsCancellation: true`
+```text
+Node: 22.x
+Region: dxb1
+maxDuration: 10
+supportsCancellation: true
+```
 
-Expected production checks:
-- `status = ok`
-- `runtime = v22.x`
-- `commit = VERCEL_GIT_COMMIT_SHA`
-- `model.configured = true` when LLM tailoring is enabled.
+Returns only safe deployment state:
+- service status;
+- Node runtime;
+- Vercel region;
+- `VERCEL_GIT_COMMIT_SHA`;
+- model configured/model ID/reasoning setting;
+- event-sink configured flag;
+- active analysis limits.
+
+This is the deployment receipt used by CI to prove the exact merged SHA is live.
 
 ## Environment variables
 
-### Required for maximal LLM tailoring
+### Required for maximal model-assisted tailoring
 
-Set in **Production** and **Preview**:
+Set for **Preview and Production**:
 
 ```text
-OPENAI_API_KEY=<your OpenAI project API key>
+OPENAI_API_KEY=<secret OpenAI project key>
 OPENAI_MODEL=gpt-5.6-sol
 OPENAI_REASONING_EFFORT=medium
 OPENAI_MAX_OUTPUT_TOKENS=2200
 ```
 
-`OPENAI_API_KEY` is secret/server-only. Do not prefix it with `NEXT_PUBLIC_`, `VITE_`, `PUBLIC_`, or expose it to browser code.
+`OPENAI_API_KEY` is server-only. Never expose it through a browser/public-prefixed environment variable.
 
-Why these values:
-- `gpt-5.6-sol` is the highest-capability GPT-5.6 model and supports text/image input, Responses API and Structured Outputs;
-- `medium` reasoning is the production default for high-quality tailoring without turning every interactive request into a worst-case latency path;
-- increase `OPENAI_REASONING_EFFORT=high` only after measuring latency on real employer/buyer/JD inputs.
+Defaulting to `gpt-5.6-sol` keeps the highest-capability model on the bounded tailoring step. `medium` reasoning is the default interactive trade-off; move to `high` only after real latency/quality comparison on employer/buyer inputs.
 
-### Explicit production safety/latency bounds
+### Required explicit safety/latency configuration
 
-Set in **Production** and **Preview** so deployment behavior is not dependent on code defaults:
+Set for **Preview and Production**:
 
 ```text
 ANALYZE_FETCH_TIMEOUT_MS=9000
@@ -108,22 +133,20 @@ ANALYZE_MAX_SOURCE_CHARS=50000
 ANALYZE_MAX_ARTIFACT_CHARS=45000
 ```
 
-These are bounded again in server code; invalid or extreme environment values are clamped.
+Server code clamps extreme values again.
 
-### Optional durable event receipts
-
-If a durable HTTPS event receiver is available:
+### Optional durable event receipt sink
 
 ```text
-IMPACT_EVENT_SINK_URL=https://<your-event-receiver>
-IMPACT_EVENT_SINK_TOKEN=<bearer token>
+IMPACT_EVENT_SINK_URL=https://<your HTTPS receiver>
+IMPACT_EVENT_SINK_TOKEN=<secret bearer token>
 ```
 
-If these are absent, the event function still writes sanitized receipts to Vercel logs. Do not block the user-facing response on an unavailable event sink.
+If absent, safe events still exist in Vercel logs and user-facing flows do not fail.
 
 ### Vercel system environment variables
 
-In Vercel Project Settings → Environment Variables, enable **Automatically expose System Environment Variables**. Do **not** manually create these:
+In Vercel Project Settings → Environment Variables, enable **Automatically expose System Environment Variables**. Do not manually create:
 
 ```text
 VERCEL_REGION
@@ -134,55 +157,77 @@ VERCEL_GIT_COMMIT_SHA
 VERCEL_GIT_COMMIT_REF
 ```
 
-`api/health.js` uses `VERCEL_GIT_COMMIT_SHA` to prove which commit is actually live.
+`api/health.js` depends on `VERCEL_GIT_COMMIT_SHA` for exact-deployment verification.
 
-## Vercel dashboard settings
-
-Use:
+## Vercel project settings
 
 ```text
 Framework Preset: Other
 Production Branch: main
 Node.js Version: 22.x
 Root Directory: repository root
-Primary region: dxb1 (also enforced in vercel.json)
+Primary Function Region: dxb1
+Git Integration: enabled
 ```
 
-Keep Git integration enabled so PR/branch pushes create Preview deployments and `main` creates Production deployments.
+Environment-variable changes require a new deployment before functions see them.
 
-## LLM tailoring user path
+## User input / tailoring path
 
-The deterministic Lens remains:
+Viewer can supply any useful subset of:
 
 ```text
-viewer role / intent / workflow
-+ optional company URL
-+ optional job URL or pasted JD
-→ deterministic evidence ranking
-→ proof boundary
-→ next action
+role/function
+intent: hiring | buying | collaborating | applying | exploring
+owned workflow / KPI / problem
+company/team URL
+job URL
+pasted job description
 ```
 
-When `OPENAI_API_KEY` is configured, the same Compile action also runs:
+Compile then runs:
 
 ```text
-supplied target context
-+ safely retrieved company/JD source
-+ canonical ARTIFACT_REGISTRY evidence
-→ GPT-5.6 Sol structured interpretation
-→ observed target facts
-→ provisional viewer/workflow/KPI model
-→ registry-bounded evidence matches
-→ explicit inference / claim boundary
+source retrieval (model-free)
++ deterministic registry ranking
++ explicit source/inference/boundary UI
++ at most one combined GPT tailoring call
++ backend re-hydration from ARTIFACT_REGISTRY.json
+→ canonical evidence matches + provisional workflow/KPI interpretation
 ```
 
-The model cannot create new proof, upgrade P-levels, or invent company need. Backend hydration replaces model-proposed artifact metadata with canonical registry metadata before returning it to the browser.
+The model may choose relevance; it cannot create an artifact, proof level, receipt or claim boundary. Unknown model-selected IDs are dropped. Known IDs have their proof/evidence/boundary overwritten from the canonical registry before browser rendering.
 
-Visitors can also drop/paste a resume, README, proposal, JD, brief, PDF, DOCX, structured text file, public URL or image in the existing artifact workbench. Text/PDF/DOCX retain a deterministic local-first path; images require the model path for semantic interpretation.
+The artifact workbench also accepts:
+
+```text
+pasted text
+public URL / repository
+TXT / Markdown / JSON / YAML / CSV / HTML
+PDF (text extraction capped at 30 pages)
+DOCX
+PNG / JPEG / WebP (semantic interpretation requires model)
+```
+
+Browser input bounds:
+- text/doc file: 8 MB;
+- image: 3 MB.
+
+## Front-end invariants now enforced
+
+- stable deterministic ranking tie-breaker;
+- registry failure is visible rather than silently producing empty proof;
+- company/JD source-fetch failures are visible per source;
+- correction is recorded only after regeneration changes viewer/presentation state;
+- second real artifact submission emits `second_artifact_submitted`;
+- viewer form state restores from the local session on re-entry;
+- stale overlapping generation responses cannot overwrite the newer request;
+- `/proof-map` is generated from the live registry;
+- legacy `/proof/*` resolves through the same V2 runtime.
 
 ## Firewall / abuse boundary
 
-For any deployment plan with Vercel WAF rate limiting, publish a rule for the expensive endpoint:
+When the plan supports rate limiting, publish the high-cost rule first:
 
 ```text
 Name: impact-analyze-rate-limit
@@ -192,7 +237,7 @@ Key: IP address
 Action: 429 Too Many Requests
 ```
 
-If the plan supports a second rate-limit rule, use:
+If a second independent rate-limit rule is available:
 
 ```text
 Name: impact-event-rate-limit
@@ -202,19 +247,27 @@ Key: IP address
 Action: 429 Too Many Requests
 ```
 
-The first rule has priority because `/api/analyze` can incur model cost and public-network I/O.
+## CI / production proof gates
 
-## Production smoke gate
+`.github/workflows/vercel-source-gate.yml` has three levels.
 
-`.github/workflows/vercel-source-gate.yml` now has two levels:
+### 1. Source gate — push + PR
 
-1. `source-gate` on push/PR — syntax, Vercel contract, Node pin and required-file checks.
-2. `production-smoke` on `main` — waits for `impactwithtaha.vercel.app` to report the exact Git SHA, then verifies:
-   - `/api/health`;
-   - `/lens` serves V2 + additive LLM layer;
-   - canonical registry is readable;
-   - public URL extraction works with model disabled;
-   - `127.0.0.1` is rejected by the server boundary.
+Checks:
+- JS syntax for server/browser/smoke files;
+- Node 22 pin;
+- Vercel function contract;
+- canonical V2 route contract;
+- required production files.
+
+### 2. Production HTTP smoke — `main` only
+
+Waits until `https://impactwithtaha.vercel.app/api/health` reports **exactly `${{ github.sha }}`**, then verifies:
+- health/runtime;
+- canonical V2 + LLM scripts;
+- evidence registry;
+- real public URL extraction with model disabled;
+- private `127.0.0.1` rejection.
 
 Manual equivalent:
 
@@ -224,40 +277,35 @@ EXPECTED_SHA=<merged-main-sha> \
 node scripts/production-smoke.mjs --wait
 ```
 
-To require the model during a manual smoke:
+### 3. Production Chromium behavior smoke — `main` only
 
-```bash
-REQUIRE_MODEL=1 node scripts/production-smoke.mjs
-```
+Installs pinned `playwright@1.55.0` only in CI and exercises the live Vercel product:
+- direct `/lens` navigation + refresh;
+- deterministic viewer compilation;
+- correction followed by a changed generated state;
+- pasted-artifact analysis;
+- share unlock only after first value;
+- canonical `/proof-map`;
+- legacy `/proof/driftguard`;
+- mobile horizontal-overflow check;
+- material browser/page errors.
 
 ## Deployment sequence
 
-1. Add the Production + Preview environment variables above.
+1. Add all required Preview + Production env values.
 2. Enable Vercel system environment variables.
-3. Publish the `/api/analyze` WAF rate-limit rule when available.
-4. Deploy the hardening branch as Preview.
-5. Check `/api/health`; confirm Node 22.x and model configured.
-6. Run a real Lens input: role + JD/company source + workflow/problem.
-7. Confirm deterministic results render even if model enhancement is intentionally disabled/fails.
-8. Confirm model-assisted section uses only canonical registry evidence and exposes an explicit claim boundary.
-9. Merge to `main`.
-10. Let the production GitHub smoke gate prove `impactwithtaha.vercel.app` is serving the merged SHA.
-11. Only then run the cold-evaluator evidence gate.
+3. Publish the `/api/analyze` rate-limit rule if available on the plan.
+4. Deploy `hardening/impact-v3-production` as a Vercel Preview.
+5. Verify Preview `/api/health`: Node 22.x + model configured + correct preview SHA.
+6. Exercise one real role + JD/company source + workflow/problem.
+7. Verify deterministic output remains useful with model failure/disabled.
+8. Verify model output references only canonical evidence and preserves boundaries.
+9. Merge PR #4 to `main`.
+10. Require both production HTTP and Chromium smoke gates to pass.
+11. Run one cold evaluator without operator explanation.
 
-## External evidence gate after deployment
+## Proof boundary after deploy
 
-Deployment is not validation. The next proof event remains:
+A green production SHA + HTTP + Chromium gate proves deployment/runtime behavior. It still does not prove hiring conversion, buyer conversion/payment, repeated use, model relevance quality, referral quality, causal KPI movement or ROI.
 
-```text
-cold evaluator
-→ /lens
-→ real role/JD/company source
-→ deterministic evidence view
-→ model-assisted relevance layer (if configured)
-→ opens a canonical receipt
-→ corrects/accepts the lens
-→ submits a real artifact
-→ takes a consequential next action
-```
-
-Record whether the evaluator needed operator explanation. A working deployment upgrades implementation confidence; only real external behavior upgrades the product evidence state.
+The next evidence upgrade must come from a cold evaluator who supplies real context, inspects a receipt, corrects/accepts the lens, submits a real artifact and takes a consequential next action.
