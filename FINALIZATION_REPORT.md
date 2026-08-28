@@ -1,4 +1,4 @@
-# Impact Lens Finalization Report — Production V3 hardening
+# Impact Lens Finalization Report — Production V3
 
 ## Observable target
 
@@ -6,68 +6,98 @@
 
 > observer or artifact → owned workflow → strongest current evidence → explicit boundary → consequential next action
 
-V3 does not broaden product scope. It hardens the existing vertical slice and adds an optional model-assisted relevance layer that cannot upgrade proof.
+V3 hardens that existing vertical slice. It does not justify broader accounts/CRM/agent scope.
 
-## V3 hardening implemented
+## Production V3 implemented
 
-- pinned Node 22.x Vercel runtime;
-- canonical Dubai `dxb1` function placement;
-- `/api/health` deployment/commit/config receipt;
-- production smoke gate tied to the exact merged Git SHA;
-- safer URL retrieval with DNS resolution, pinned public-IP lookup, bounded redirects, content type, bytes and time;
-- public URL extraction survives downstream model failure;
-- configurable model timeout and artifact/source limits;
-- GPT-5.6 Sol Responses API integration with Structured Outputs;
-- `tailor` mode that maps supplied role/JD/company/workflow context against `ARTIFACT_REGISTRY.json`;
-- backend hydration forces model-selected evidence back to canonical registry metadata and claim boundaries;
-- additive browser model layer loaded after V2, so deterministic value remains intact;
-- safe LLM telemetry events with no supplied target text in analytics;
-- optional durable HTTPS event sink;
-- explicit Production/Preview environment contract in `DEPLOY.md` and `.env.example`.
+### Canonical runtime
+- Node 22.x;
+- Vercel `dxb1`;
+- one V2 registry-backed renderer for `/`, `/lens`, `/work`, `/proof-map`, `/proof/*`, proof status, method, resume and start;
+- `/proof-map` generated from `ARTIFACT_REGISTRY.json` rather than a dated hand-maintained page.
 
-## What a visitor can now supply
+### Deterministic/browser robustness
+- stable evidence tie-breaking;
+- visible canonical-registry failure;
+- visible per-source company/JD retrieval status;
+- stale generation-response protection;
+- local viewer-state restoration;
+- correction counted only after regenerated state changes;
+- second-artifact receipt;
+- bounded local file/image sizes;
+- explicit local/model failure notes.
 
-Viewer-target inputs:
-- role/function;
-- intent;
-- workflow/problem;
-- company/team URL;
-- job URL;
-- pasted job description.
+### Public-source boundary
+- DNS resolution and pinned-public-IP fetches;
+- private/local/special IPv4+IPv6 rejection;
+- bounded redirects, ports, types, bytes and time;
+- deterministic URL extraction survives model failure;
+- viewer-context URLs are model-free by default.
 
-Artifact workbench inputs remain:
-- pasted text;
-- public URL / repository;
-- TXT / Markdown / JSON / YAML / CSV / HTML;
-- PDF;
-- DOCX;
-- PNG / JPEG / WebP with configured vision model.
+### Model-assisted tailoring
+- additive `impact-llm.js` layer;
+- OpenAI Responses API + Structured Outputs;
+- default `gpt-5.6-sol` with medium reasoning;
+- one combined target call over supplied role/workflow/JD/company evidence;
+- model recommendations limited to canonical registry IDs;
+- backend re-hydrates proof level, mechanism, evidence URL and claim boundary from the registry before browser rendering;
+- deterministic view remains usable with no model key.
+
+### Deployment + behavioral receipts
+- `/api/health` exposes safe deployed-SHA/runtime/config state;
+- sanitized event allowlist with optional HTTPS sink;
+- source CI gate;
+- exact-production-SHA HTTP smoke;
+- live Chromium production smoke for lens, correction, artifact view, share-after-value, proof routes and mobile overflow.
+
+## Exact deploy inputs
+
+Required Preview + Production environment:
+
+```text
+OPENAI_API_KEY=<secret>
+OPENAI_MODEL=gpt-5.6-sol
+OPENAI_REASONING_EFFORT=medium
+OPENAI_MAX_OUTPUT_TOKENS=2200
+ANALYZE_FETCH_TIMEOUT_MS=9000
+ANALYZE_MODEL_TIMEOUT_MS=30000
+ANALYZE_MAX_SOURCE_BYTES=1000000
+ANALYZE_MAX_SOURCE_CHARS=50000
+ANALYZE_MAX_ARTIFACT_CHARS=45000
+```
+
+Optional:
+
+```text
+IMPACT_EVENT_SINK_URL=https://<receiver>
+IMPACT_EVENT_SINK_TOKEN=<secret>
+```
+
+Enable Vercel system environment variables so the deployment can expose `VERCEL_GIT_COMMIT_SHA` to the safe health receipt.
 
 ## Claim state
 
-V3 can establish production deployment/runtime correctness after the post-merge smoke succeeds.
+Source implementation/CI can establish that the hardening exists and is internally coherent.
 
-It still does **not** establish:
+After merge, the exact-SHA HTTP + Chromium production gates can establish that the intended runtime is actually deployed and the primary browser behavior works.
+
+They still do **not** establish:
 - hiring conversion lift;
-- buyer conversion or payment;
-- generalized artifact-understanding quality;
+- buyer conversion/payment;
 - repeated external use;
+- model relevance quality across arbitrary targets;
 - referral conversion quality;
-- time/cost/ROI improvement;
+- causal time/cost/KPI improvement;
 - production-scale crawler reliability;
 - company-specific need without supplied source evidence.
 
-## Highest-information next gate
+## Highest-information next transition
 
-Run one cold evaluator through:
+1. configure Vercel Preview + Production environment;
+2. deploy PR #4 Preview and inspect `/api/health`;
+3. exercise one real role + JD/company source + workflow/problem;
+4. merge when model + deterministic boundaries both behave correctly;
+5. require production HTTP + Chromium gates green;
+6. put one cold evaluator through the complete flow without explanation.
 
-1. land on `/`;
-2. open `/lens`;
-3. supply role + real JD/company source + one owned workflow/problem;
-4. compare deterministic and model-assisted relevance;
-5. inspect one canonical receipt;
-6. correct or explicitly accept the inferred lens;
-7. submit one real artifact;
-8. take the compiled next action without operator explanation.
-
-Success is an external behavior receipt, not another code change.
+The next proof upgrade must be external behavior, not another adjacent portfolio feature.
