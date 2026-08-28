@@ -413,13 +413,14 @@ module.exports = async function handler(req, res) {
   const viewer = payload.viewer || {};
   const artifact = payload.artifact || {};
   const allowModel = payload.options?.model !== false;
+  const allowUrlModel = payload.options?.model === true;
 
   try {
     if (kind === 'url') {
       const sourceText = await fetchPublicUrl(artifact.url);
       let analysis = null;
       let modelError = '';
-      if (allowModel) {
+      if (allowUrlModel) {
         try { analysis = await runModel({ viewer, artifact, sourceText }); }
         catch (error) { modelError = error?.message || 'Model interpretation failed.'; }
       }
@@ -430,7 +431,7 @@ module.exports = async function handler(req, res) {
         modelError,
         note: analysis
           ? 'Public URL retrieved and interpreted through the configured model.'
-          : 'Public URL retrieval succeeded; deterministic analysis remains available.'
+          : 'Public URL retrieval succeeded. URL interpretation is model-free by default; use target tailoring or explicitly set options.model=true for semantic URL interpretation.'
       });
     }
 
