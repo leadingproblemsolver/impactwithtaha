@@ -4,14 +4,15 @@
 |---|---|---|
 | `/` | Product + portfolio positioning | Tailor the work to the visitor |
 | `/lens` | Viewer tailoring + artifact workbench | Generate view → inspect proof → submit artifact |
-| `/work` | Raw proof surfaces | Open exact case study or switch to Lens |
+| `/work` | Canonical proof surfaces generated from `ARTIFACT_REGISTRY.json` | Open exact case study or switch to Lens |
 | `/execution` | Active commercial field experiment | Open GTM landing/demo/intake |
 | `/proof-status` | Proven vs missing evidence | Inspect claim boundary |
 | `/method` | Impact Lens Protocol | Inspect contract / Ulomis lineage |
 | `/resume` | Canonical shareable CV surface | Evaluate in context / request packet |
 | `/start` | Convert interest into contact/use | Run Lens / email / GitHub |
 | `/links` | Direct URL registry | Open exact artifact |
-| `/proof/impact-lens` | This branch as proof | Repo / Lens |
+| `/proof/recruitment-lead-gen` | Recruitment lead-generation buyer proof: exact ICP → owner → evidence → sequence → tracker | Inspect sanitized proof bundle / run buyer Lens |
+| `/proof/impact-lens` | Impact Lens as proof | Repo / Lens |
 | `/proof/ulomis` | Continuity lineage | Ulomis repo |
 | `/proof/commercial-systems` | GTM/commercial field experiment | Live fieldwork |
 | `/proof/driftguard` | Agent reliability proof | Repository |
@@ -20,4 +21,4 @@
 | `/proof/project-spec-compiler` | Specification-control CLI proof | Repository |
 | `/proof/pathmeter` | Delivery-instrumentation CLI proof | Repository |
 
-Netlify `_redirects` routes `/api/*` to Functions before the SPA rewrite. Direct routes and refresh remain stable without a framework server.
+Vercel routes canonical portfolio/proof paths through the current Impact Lens runtime. Proof cards and `/proof/<id>` pages resolve from `ARTIFACT_REGISTRY.json`, so new proof families do not require a second hand-maintained UI catalog.
