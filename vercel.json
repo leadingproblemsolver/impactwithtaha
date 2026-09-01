@@ -29,6 +29,8 @@
   ],
   "routes": [
     {"src":"^/$","dest":"/impact-v2.html"},
+    {"src":"^/recall$","dest":"/recall.html"},
+    {"src":"^/proof/commercial-field-run$","dest":"/commercial-field-run.html"},
     {"src":"^/(lens|work|proof-status|proof-map|method|resume|start)$","dest":"/impact-v2.html"},
     {"src":"^/proof/.*","dest":"/impact-v2.html"},
     {"handle":"filesystem"},
