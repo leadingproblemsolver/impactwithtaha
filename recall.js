@@ -14,7 +14,6 @@
     recruiting:["recruitment","talent","hr","lead generation","outbound"],
     recruitment:["recruiting","talent","hr","lead generation","outbound"],
     driver:["recruitment","recruiting","outbound","commercial"],
-    gt m:["sales","growth","revops","commercial"],
     gtm:["sales","growth","revops","commercial","signals","qualification"],
     growth:["gtm","sales","conversion","revenue"],
     agent:["ai","llm","workflow","reliability","tool","mcp","verification","recovery"],
