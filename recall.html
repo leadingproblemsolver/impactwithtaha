@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Rule-based evidence recall across Impact with Taha's public proof registry.">
+  <meta name="theme-color" content="#090b0f">
+  <title>Impact with Taha — Evidence Recall</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script defer src="/recall.js"></script>
+</head>
+<body>
+  <div class="shell">
+    <nav class="nav-shell" aria-label="Primary">
+      <a class="brand" href="/">Impact with Taha</a>
+      <div class="nav-links">
+        <a href="/lens">Lens</a>
+        <a href="/work">Proof</a>
+        <a href="/recall" aria-current="page">Recall</a>
+        <a href="/proof-status">Boundaries</a>
+        <a href="/method">Method</a>
+        <a href="/resume">Resume</a>
+        <a href="/start">Start</a>
+      </div>
+    </nav>
+    <main id="recall-app" tabindex="-1">
+      <header class="hero compact">
+        <p class="eyebrow">Deterministic evidence recall</p>
+        <h1>Ask for a capability. Get only the proof that actually matches.</h1>
+        <p class="lead">No model ranking. No invented relevance. Recall runs against the public evidence registry with explicit weighted rules, shows why each item matched, and keeps the claim boundary attached.</p>
+      </header>
+      <section>
+        <div class="lens-shell">
+          <div class="panel">
+            <div class="field">
+              <label for="recall-query">What do you need evidence for?</label>
+              <textarea id="recall-query" placeholder="e.g. commission sales, outbound prospecting, AI agent reliability, API integrations, technical GTM"></textarea>
+            </div>
+            <div class="quick-role-row" aria-label="Example recall queries">
+              <button class="choice recall-example" type="button" data-q="commission sales outbound prospecting">commission sales</button>
+              <button class="choice recall-example" type="button" data-q="recruiting outbound lead generation">recruiting outbound</button>
+              <button class="choice recall-example" type="button" data-q="AI agent reliability verification recovery">agent reliability</button>
+              <button class="choice recall-example" type="button" data-q="technical GTM market signals qualification">technical GTM</button>
+              <button class="choice recall-example" type="button" data-q="backend API integration deployment">backend integrations</button>
+            </div>
+            <button class="btn primary" id="run-recall">Recall evidence →</button>
+            <p class="micro" style="margin-top:10px">Rules: exact name/id match &gt; actor/domain match &gt; mechanism match &gt; verified-evidence match. Synonym expansion is fixed and inspectable. Claim boundaries never increase score or proof level.</p>
+          </div>
+          <div class="panel" id="recall-summary">
+            <p class="eyebrow">Before recall</p>
+            <h2>The registry is the source of truth.</h2>
+            <p class="lead">Results will show the matched terms, proof state, current receipt, and what the evidence does not prove.</p>
+          </div>
+        </div>
+        <div id="recall-results" class="result-stack" style="margin-top:16px"></div>
+      </section>
+    </main>
+    <footer>
+      <span>Rule-based recall is deterministic over the checked-in public registry. It does not infer unrecorded experience.</span>
+      <a href="/work">Inspect full proof registry →</a>
+    </footer>
+  </div>
+</body>
+</html>
