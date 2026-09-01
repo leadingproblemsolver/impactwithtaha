@@ -26,6 +26,8 @@ Vercel routes:
 - `/` — contextual portfolio homepage
 - `/lens` — viewer + artifact compiler
 - `/work` — canonical public evidence registry
+- `/recall` — deterministic rule-based evidence recall over the checked-in registry
+- `/proof/commercial-field-run` — compact external-outbound negative-evidence receipt
 - `/proof-status` — proof ladder / claim boundaries
 - `/method` — Impact Lens protocol
 - `/resume` — canonical CV surface
@@ -41,6 +43,8 @@ Vercel routes:
 - internal-only artifacts.
 
 Adding a verified public receipt should update the registry rather than duplicating project copy in the UI.
+
+The recall surface reads this registry directly. Its ranking is deterministic: exact name/id matches outrank actor/domain matches, which outrank mechanism and receipt-text matches. Fixed synonym expansion is visible in `recall.js`; claim boundaries never raise proof level.
 
 ## Artifact input
 
@@ -68,6 +72,7 @@ The deterministic/local first-value path remains usable without a model key.
 - personalization changes relevance and presentation, never proof level;
 - company names alone are not company-specific evidence;
 - supplied company/JD source material remains distinct from inference;
+- rule-based recall cannot invent unrecorded experience;
 - no invented adoption, revenue, ROI, production, hiring, pipeline or causal claims;
 - model secrets remain server-side;
 - telemetry excludes artifact bodies and free-text problem content;
