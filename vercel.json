@@ -29,6 +29,7 @@
   ],
   "routes": [
     {"src":"^/$","dest":"/impact-v2.html"},
+    {"src":"^/diagnostic/?$","dest":"/diagnostic/index.html"},
     {"src":"^/recall$","dest":"/recall.html"},
     {"src":"^/proof/commercial-field-run$","dest":"/commercial-field-run.html"},
     {"src":"^/(lens|work|proof-status|proof-map|method|resume|start)$","dest":"/impact-v2.html"},
