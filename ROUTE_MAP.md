@@ -3,6 +3,7 @@
 | Route | Purpose | Next action |
 |---|---|---|
 | `/` | Product + portfolio positioning | Tailor the work to the visitor |
+| `/diagnostic` | Agency-facing post-lead bottleneck check for home-service clients | Send one client workflow → receive bounded diagnosis + smallest test |
 | `/lens` | Viewer tailoring + artifact workbench | Generate view → inspect proof → submit artifact |
 | `/work` | Canonical proof surfaces generated from `ARTIFACT_REGISTRY.json` | Open exact case study or switch to Lens |
 | `/execution` | Active commercial field experiment | Open GTM landing/demo/intake |
@@ -21,4 +22,4 @@
 | `/proof/project-spec-compiler` | Specification-control CLI proof | Repository |
 | `/proof/pathmeter` | Delivery-instrumentation CLI proof | Repository |
 
-Vercel routes canonical portfolio/proof paths through the current Impact Lens runtime. Proof cards and `/proof/<id>` pages resolve from `ARTIFACT_REGISTRY.json`, so new proof families do not require a second hand-maintained UI catalog.
+Vercel routes canonical portfolio/proof paths through the current Impact Lens runtime. The dedicated `/diagnostic` route is intentionally buyer-facing and narrow: it explains one post-lead workflow diagnostic without exposing the internal proof/control architecture. Proof cards and `/proof/<id>` pages resolve from `ARTIFACT_REGISTRY.json`, so new proof families do not require a second hand-maintained UI catalog.
