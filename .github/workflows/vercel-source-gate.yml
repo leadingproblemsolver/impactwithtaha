@@ -19,6 +19,7 @@ jobs:
         run: |
           npm run test:syntax
           node --check scripts/browser-smoke.mjs
+          node --check diagnostic/app.js
       - name: Validate Vercel contract
         run: |
           node - <<'NODE'
@@ -46,6 +47,7 @@ jobs:
           test -s impact-v2.js
           test -s impact-llm.js
           test -s diagnostic/index.html
+          test -s diagnostic/app.js
           test -s ARTIFACT_REGISTRY.json
           test -s scripts/production-smoke.mjs
           test -s scripts/browser-smoke.mjs
