@@ -6,6 +6,7 @@
   <meta name="description" content="A concrete post-lead bottleneck check for home-service agencies and their clients.">
   <meta name="theme-color" content="#090b0f">
   <title>Post-Lead Bottleneck Check — Taha Aslam</title>
+  <script defer src="/diagnostic/app.js"></script>
   <style>
     :root{--bg:#090b0f;--panel:#11151d;--panel2:#0d1118;--line:#262d39;--text:#f4f6f8;--muted:#aab2bf;--soft:#d9e2ef;--max:1060px}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
@@ -89,14 +90,14 @@
   <section id="send">
     <div class="cta">
       <p class="eyebrow">Start with one client</p>
-      <h2 style="margin-bottom:12px">Five rough lines are enough to see whether this is worth diagnosing.</h2>
+      <h2>Five rough lines are enough to see whether this is worth diagnosing.</h2>
       <p class="support">Reply to the message that sent you this page with the template below. If the evidence is too thin, I will say so rather than manufacture a recommendation.</p>
       <div id="prompt" class="prompt">Client type: [HVAC / plumbing / electrical / roofing / other]
 Lead source: [Google / LSA / Meta / referral / mixed]
 Approx. lead or call volume: [rough range]
 Current path after a lead arrives: [who responds → qualifies → quotes → books]
 What feels broken or slow: [one concrete symptom]</div>
-      <button class="btn primary" type="button" onclick="copyPrompt()">Copy the 5-line prompt</button>
+      <button id="copy-prompt" class="btn primary" type="button">Copy the 5-line prompt</button>
       <div id="status" class="status" aria-live="polite"></div>
     </div>
   </section>
@@ -109,8 +110,5 @@ What feels broken or slow: [one concrete symptom]</div>
 
   <footer>Operational Constraint Diagnostic · Taha Aslam · Claims stay limited to what the supplied workflow evidence supports.</footer>
 </div>
-<script>
-function copyPrompt(){const text=document.getElementById('prompt').innerText;const status=document.getElementById('status');if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text).then(()=>status.textContent='Copied — paste it into your reply.').catch(()=>status.textContent='Select the five lines above and copy them.');}else{status.textContent='Select the five lines above and copy them.';}}
-</script>
 </body>
 </html>
