@@ -48,6 +48,13 @@ try {
   await page.goto(`${base}/proof/driftguard`, { waitUntil: 'domcontentloaded' });
   await page.waitForSelector('h1');
   if (!/DriftGuard/i.test(await page.locator('h1').innerText())) throw new Error('legacy proof route did not resolve to canonical evidence');
+
+  await page.goto(`${base}/diagnostic`, { waitUntil: 'domcontentloaded' });
+  await page.waitForSelector('h1');
+  if (!/You generate the leads/i.test(await page.locator('h1').innerText())) throw new Error('buyer diagnostic headline missing');
+  if (!/Illustrative example, not a client-result claim/i.test(await page.locator('body').innerText())) throw new Error('diagnostic claim boundary missing');
+  if ((await page.locator('#send').count()) !== 1) throw new Error('diagnostic CTA target missing');
+  if ((await page.locator('#prompt').count()) !== 1) throw new Error('diagnostic workflow prompt missing');
   await context.close();
 
   const mobileContext = await browser.newContext({ viewport: { width: 390, height: 844 } });
@@ -55,8 +62,14 @@ try {
   mobile.on('pageerror', error => errors.push(`mobile pageerror: ${error.message}`));
   await mobile.goto(`${base}/lens`, { waitUntil: 'domcontentloaded' });
   await mobile.waitForSelector('#generate');
-  const overflow = await mobile.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
-  if (overflow > 2) throw new Error(`mobile horizontal overflow detected (${overflow}px)`);
+  let overflow = await mobile.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+  if (overflow > 2) throw new Error(`mobile horizontal overflow detected on /lens (${overflow}px)`);
+
+  await mobile.goto(`${base}/diagnostic`, { waitUntil: 'domcontentloaded' });
+  await mobile.waitForSelector('h1');
+  overflow = await mobile.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+  if (overflow > 2) throw new Error(`mobile horizontal overflow detected on /diagnostic (${overflow}px)`);
+  if (!/You generate the leads/i.test(await mobile.locator('h1').innerText())) throw new Error('mobile diagnostic headline missing');
   await mobileContext.close();
 
   const materialErrors = errors.filter(error => !/favicon|Failed to load resource.*404/i.test(error));
@@ -71,6 +84,8 @@ try {
     share_after_value: true,
     proof_map: true,
     legacy_proof_route: true,
+    diagnostic_route: true,
+    diagnostic_claim_boundary: true,
     mobile_overflow: false
   }, null, 2));
 } finally {
