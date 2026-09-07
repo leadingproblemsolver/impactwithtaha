@@ -16,6 +16,12 @@ module.exports = async function handler(req, res) {
     event_sink: {
       configured: Boolean(process.env.IMPACT_EVENT_SINK_URL)
     },
+    qdb_v0: {
+      ingest_token_configured: Boolean(process.env.QDB_INGEST_TOKEN),
+      supabase_configured: Boolean(process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY),
+      model_configured: Boolean(process.env.OPENAI_API_KEY),
+      model_id: process.env.QDB_OPENAI_MODEL || process.env.OPENAI_MODEL || 'gpt-5.6-sol'
+    },
     limits: {
       fetch_timeout_ms: Number(process.env.ANALYZE_FETCH_TIMEOUT_MS || 9000),
       model_timeout_ms: Number(process.env.ANALYZE_MODEL_TIMEOUT_MS || 30000),

@@ -14,6 +14,10 @@
     "api/health.js": {
       "maxDuration": 10,
       "supportsCancellation": true
+    },
+    "api/qdb-ingest.js": {
+      "maxDuration": 60,
+      "supportsCancellation": true
     }
   },
   "headers": [

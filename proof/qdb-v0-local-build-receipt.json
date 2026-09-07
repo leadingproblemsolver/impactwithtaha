@@ -1,0 +1,63 @@
+{
+  "receipt_version": 1,
+  "scope": "synthetic_local_contract_test",
+  "real_execution_evidence": false,
+  "generated_at": "2026-09-07T21:17:32.579Z",
+  "checks": {
+    "happy_path": {
+      "passed": true,
+      "upstream_order": [
+        "persist_source",
+        "model_extract",
+        "atomic_apply"
+      ],
+      "extraction_count": 3
+    },
+    "permission_gate": {
+      "passed": true,
+      "status": 403,
+      "upstream_calls": 0
+    },
+    "provenance_failure": {
+      "passed": true,
+      "status": 422,
+      "source_persisted": true,
+      "state_applied": false
+    },
+    "build_contract": {
+      "node_22_pinned": true,
+      "qdb_test_script_present": true,
+      "vercel_function_declared": true,
+      "required_env_documented": true,
+      "ci_runs_qdb_contract": true
+    }
+  },
+  "file_sha256": {
+    "api/qdb-ingest.js": "b403717a582407c1e83ae55083c06fa52a29e6099d1b5f14ee6a21d1a5e532d7",
+    "lib/qdb-v0.js": "79c45d237987e2f843999107760ea22321f64a93b4aed41259f8887aac3fb892",
+    "supabase/qdb-v0.sql": "560c56c83a959317029f2dd908ce902723a4f83c65f9f468d9a227f2edd8a390",
+    "docs/QDB_V0_PRODUCTION_PATH.md": "9abfe2abda574ee6ca6fbb97fa1b7110f80fa357acd2907efeada5b79d068f37",
+    "package.json": "b9a60763ebf007c7aaf59b7355cc29477078f4daf671e21b243301698d07aad0",
+    ".env.example": "0462849f6c7fb8d6967e811740ade99b2f5b17dd03805dbba865a29caafcbb65",
+    "api/health.js": "e679b260e2c758b6631934b65c4ccdf7f591b52784f2577f619d7235e308950b",
+    "vercel.json": "62d9e1546c0adad15aa4fea8be70c3579839957cf5a33492df59450f6210b4ed",
+    ".github/workflows/vercel-source-gate.yml": "14dd261e7a41bae5b5cd14c2f17be5c835fed84f2a3a5ba3477f7da1f79a2666",
+    "scripts/qdb-v0-test.mjs": "8fc1cd14e4a462c5636f2fba34db6375b7629cdc060e9e05bcd2a712584a326d"
+  },
+  "proves": [
+    "permitted input is required before any external call",
+    "raw interaction persistence precedes model extraction",
+    "interaction persistence uses conflict-ignore semantics so retries cannot overwrite the raw source",
+    "every extraction source_quote must exist verbatim in source_text",
+    "provenance failure blocks state application while preserving raw source",
+    "successful extraction/state persistence uses one Supabase RPC boundary"
+  ],
+  "does_not_prove": [
+    "a real Sophie/QDB interaction occurred",
+    "n8n executed in production",
+    "Supabase schema is deployed",
+    "OpenAI or Supabase credentials work in production",
+    "Sophie reviewed, corrected, or used the output",
+    "follow-up, reconciliation, or next-session brief"
+  ]
+}
