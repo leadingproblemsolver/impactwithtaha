@@ -6,7 +6,7 @@
     "node": "22.x"
   },
   "scripts": {
-    "test:syntax": "node --check api/analyze.js && node --check api/event.js && node --check api/health.js && node --check impact-v2.js && node --check impact-llm.js && node --check scripts/production-smoke.mjs",
+    "test:syntax": "node --check api/analyze.js && node --check api/event.js && node --check api/health.js && node --check impact-v2.js && node --check impact-llm.js && node --check presentability.js && node --check scripts/production-smoke.mjs",
     "smoke:production": "node scripts/production-smoke.mjs",
     "smoke:production:wait": "node scripts/production-smoke.mjs --wait"
   }
