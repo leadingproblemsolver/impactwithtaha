@@ -3,7 +3,7 @@
 
   const app = () => document.querySelector("#app");
 
-  const featured = [
+  const fallbackFeatured = [
     {
       kicker: "Construction planning",
       title: "Source-linked 90-day readiness handoff",
@@ -46,6 +46,31 @@
       internal: true
     }
   ];
+
+  let featured = fallbackFeatured;
+
+  async function loadPublicManifest() {
+    try {
+      const response = await fetch("/PUBLIC_SURFACE_MANIFEST.json", {cache:"no-store"});
+      if (!response.ok) return;
+      const manifest = await response.json();
+      if (!Array.isArray(manifest.featured_proof)) return;
+      const compiled = manifest.featured_proof.map((item) => ({
+        kicker: item.kicker || item.id,
+        title: item.title || item.id,
+        proof: item.badge || item.state || "P1",
+        body: item.mechanism || "",
+        receipt: item.verified_receipt || "Inspectable source exists.",
+        boundary: item.boundary || "No outcome claim without an external receipt.",
+        href: item.presentation_href || item.source || "/work",
+        cta: item.cta || "Inspect source →",
+        internal: Boolean(item.internal)
+      }));
+      if (compiled.length) featured = compiled;
+    } catch (_) {
+      featured = fallbackFeatured;
+    }
+  }
 
   const card = (item) => `
     <article class="proof-case">
@@ -164,7 +189,8 @@
     observer.observe(root, {childList:true});
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", async () => {
+    await loadPublicManifest();
     observeCanonicalRenderer();
     setTimeout(applyPresentation, 0);
   });
