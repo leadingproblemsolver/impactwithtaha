@@ -147,12 +147,27 @@
     document.body.classList.toggle("presentation-home", path === "/");
     if (path !== "/") return;
     const root = app();
-    if (!root) return;
+    if (!root || root.querySelector(".proof-hero")) return;
+    root.dataset.presentationVersion = "proof-first-v1";
     root.innerHTML = homeMarkup();
     document.title = "Taha Aslam — Operational Systems, AI Reliability & GTM Engineering";
   }
 
-  document.addEventListener("DOMContentLoaded", () => setTimeout(applyPresentation, 0));
+  function observeCanonicalRenderer() {
+    const root = app();
+    if (!root) return;
+    const observer = new MutationObserver(() => {
+      if ((location.pathname.replace(/\/$/, "") || "/") === "/" && !root.querySelector(".proof-hero")) {
+        applyPresentation();
+      }
+    });
+    observer.observe(root, {childList:true});
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    observeCanonicalRenderer();
+    setTimeout(applyPresentation, 0);
+  });
   window.addEventListener("popstate", () => setTimeout(applyPresentation, 0));
   document.addEventListener("click", (event) => {
     const routeLink = event.target.closest("a[data-route]");
