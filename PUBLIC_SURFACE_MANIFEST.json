@@ -1,0 +1,61 @@
+{
+  "version": "2026-09-14",
+  "canonical_source": {
+    "repository": "https://github.com/leadingproblemsolver/impactwithtaha",
+    "production_target": "https://impactwithtaha.vercel.app/",
+    "proof_map": "https://impactwithtaha.vercel.app/proof-map",
+    "evidence_registry": "ARTIFACT_REGISTRY.json"
+  },
+  "public_identity": {
+    "name": "Taha Aslam",
+    "positioning": "Operational systems for messy human + machine reality",
+    "target_roles": [
+      "GTM Engineer",
+      "Solutions / Implementation",
+      "Technical Growth"
+    ],
+    "throughline": "observe reality -> formalize state/constraint -> implement bounded mechanism -> hostile-test -> externalize -> capture receipt"
+  },
+  "featured_proof": [
+    {
+      "id": "construction-readiness",
+      "source": "https://github.com/leadingproblemsolver/reality-ontology-runtime/pull/13",
+      "state": "P2",
+      "verified_receipt": "34 tests passing on current PR head; deterministic golden output and recovery path",
+      "boundary": "synthetic-only; real P6 schema and engineer acceptance unverified",
+      "next_evidence_event": "one anonymized real planning cycle -> engineer ACCEPT / CORRECT / REJECT"
+    },
+    {
+      "id": "signalops",
+      "source": "https://github.com/leadingproblemsolver/signalops-workbench",
+      "state": "P2",
+      "verified_receipt": "20 real public GitHub surfaces processed; 19 public_reply, 1 save",
+      "boundary": "no maintainer response, meeting, pipeline, demand, or revenue claim"
+    },
+    {
+      "id": "driftguard",
+      "source": "https://github.com/leadingproblemsolver/driftguard",
+      "state": "P2",
+      "verified_receipt": "seven-gate deterministic settlement preflight; blocking failure forces Block",
+      "boundary": "no production incident reduction, adoption, or ROI claim"
+    },
+    {
+      "id": "impact-lens",
+      "source": "https://github.com/leadingproblemsolver/impactwithtaha",
+      "state": "P2",
+      "verified_receipt": "registry-bounded contextual proof compiler with deterministic fallback",
+      "boundary": "conversion lift and repeated external use remain unproven"
+    }
+  ],
+  "renderers": {
+    "portfolio_home": "proof-first inspection interface",
+    "proof_map": "headline receipts + explicit evidence boundaries",
+    "github": "mechanism + reproduce path + current receipt + next external test",
+    "resume": "role-specific projection of canonical evidence",
+    "x": "micro-case + artifact link + external ask",
+    "linkedin": "case narrative + visual proof + inspectable source + bounded claim",
+    "direct_outreach": "one observed workflow pain -> one relevant mechanism -> one artifact -> one ask",
+    "hackathon_or_review": "judge path -> demo -> receipt -> reproduction -> limitation"
+  },
+  "maintenance_rule": "Update the evidence registry or source receipt first. Presentation may reprioritize evidence but must never upgrade its proof state."
+}
