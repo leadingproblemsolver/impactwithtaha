@@ -1,0 +1,86 @@
+{
+  "version": "2026-09-14",
+  "canonical_source": {
+    "repository": "https://github.com/leadingproblemsolver/impactwithtaha",
+    "production_target": "https://impactwithtaha.vercel.app/",
+    "proof_map": "https://impactwithtaha.vercel.app/proof-map",
+    "evidence_registry": "ARTIFACT_REGISTRY.json"
+  },
+  "public_identity": {
+    "name": "Taha Aslam",
+    "positioning": "Operational systems for messy human + machine reality",
+    "target_roles": [
+      "GTM Engineer",
+      "Solutions / Implementation",
+      "Technical Growth"
+    ],
+    "throughline": "observe reality -> formalize state/constraint -> implement bounded mechanism -> hostile-test -> externalize -> capture receipt"
+  },
+  "featured_proof": [
+    {
+      "id": "construction-readiness",
+      "kicker": "Construction planning",
+      "title": "Source-linked 90-day readiness handoff",
+      "state": "P2",
+      "badge": "P2 · deterministic, synthetic-only",
+      "mechanism": "Transforms current activities, relationships, a previous schedule snapshot, and QA/document requirements into readiness, schedule-change, and source-linked impact outputs.",
+      "source": "https://github.com/leadingproblemsolver/reality-ontology-runtime/pull/13",
+      "presentation_href": "https://github.com/leadingproblemsolver/reality-ontology-runtime/pull/13",
+      "cta": "Inspect PR + receipts ↗",
+      "verified_receipt": "34 tests passing on the current public PR head; byte-stable regression and recovery path preserved.",
+      "boundary": "Not yet verified against the engineer's real P6 export or a live project.",
+      "next_evidence_event": "one anonymized real planning cycle -> engineer ACCEPT / CORRECT / REJECT"
+    },
+    {
+      "id": "signalops",
+      "kicker": "Market intelligence",
+      "title": "SignalOps",
+      "state": "P2",
+      "badge": "P2 · real public-corpus run",
+      "mechanism": "Separates observed market evidence from interpretation, applies deterministic policy, preserves provenance, and renders restartable next-action state.",
+      "source": "https://github.com/leadingproblemsolver/signalops-workbench",
+      "presentation_href": "https://github.com/leadingproblemsolver/signalops-workbench",
+      "cta": "Inspect SignalOps ↗",
+      "verified_receipt": "20 real public GitHub surfaces processed: 19 routed to public_reply, 1 to save; private escalation remained policy-gated.",
+      "boundary": "Does not prove maintainer response, meetings, pipeline, demand, or revenue."
+    },
+    {
+      "id": "driftguard",
+      "kicker": "AI workflow reliability",
+      "title": "DriftGuard",
+      "state": "P2",
+      "badge": "P2 · reproducible control layer",
+      "mechanism": "A seven-gate settlement preflight for false-idle, lost continuation, stale callbacks, checkpoint corruption, unbounded waits, and session/provider drift.",
+      "source": "https://github.com/leadingproblemsolver/driftguard",
+      "presentation_href": "https://github.com/leadingproblemsolver/driftguard",
+      "cta": "Inspect DriftGuard ↗",
+      "verified_receipt": "A violated blocking gate deterministically forces Block; missing proof cannot become Pass.",
+      "boundary": "No production-incident reduction or external adoption is claimed without external outcome data."
+    },
+    {
+      "id": "impact-lens",
+      "kicker": "Communication infrastructure",
+      "title": "Impact Lens",
+      "state": "P2",
+      "badge": "P2 · working proof interface",
+      "mechanism": "Compiles the same evidence differently for an employer, buyer, collaborator, or practitioner without upgrading proof levels or inventing company-specific evidence.",
+      "source": "https://github.com/leadingproblemsolver/impactwithtaha",
+      "presentation_href": "/lens",
+      "internal": true,
+      "cta": "Run the lens →",
+      "verified_receipt": "Registry-bounded relevance, source/inference/boundary separation, artifact analysis, and deterministic fallback are implemented.",
+      "boundary": "Conversion lift, repeated use, and generalized relevance quality remain external tests."
+    }
+  ],
+  "renderers": {
+    "portfolio_home": "proof-first inspection interface",
+    "proof_map": "headline receipts + explicit evidence boundaries",
+    "github": "mechanism + reproduce path + current receipt + next external test",
+    "resume": "role-specific projection of canonical evidence",
+    "x": "micro-case + artifact link + external ask",
+    "linkedin": "case narrative + visual proof + inspectable source + bounded claim",
+    "direct_outreach": "one observed workflow pain -> one relevant mechanism -> one artifact -> one ask",
+    "hackathon_or_review": "judge path -> demo -> receipt -> reproduction -> limitation"
+  },
+  "maintenance_rule": "Update the evidence registry or source receipt first. Presentation may reprioritize evidence but must never upgrade its proof state."
+}
